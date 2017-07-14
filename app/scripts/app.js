@@ -17,7 +17,7 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function($routeProvider, $locationProvider, $sceDelegateProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -32,5 +32,9 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-      $locationProvider.hashPrefix('');
+    $sceDelegateProvider.resourceUrlWhitelist([
+      'self',
+      'https://schedule-builder-backend.herokuapp.com/**'
+    ]);
+    $locationProvider.hashPrefix('');
   });
