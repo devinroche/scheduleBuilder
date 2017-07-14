@@ -1,4 +1,3 @@
-// Generated on 2017-07-13 using generator-angular 0.16.0
 'use strict';
 
 var gulp = require('gulp');
@@ -9,28 +8,37 @@ var rimraf = require('rimraf');
 var wiredep = require('wiredep').stream;
 var runSequence = require('run-sequence');
 
+//app directory structor
 var yeoman = {
   app: require('./bower.json').appPath || 'app',
-  dist: 'dist'
+  dist: 'dist',
+  temp: '.tmp',
+  test: 'test'
 };
 
+// for sources
 var paths = {
   scripts: [yeoman.app + '/scripts/**/*.js'],
   styles: [yeoman.app + '/styles/**/*.scss'],
   test: ['test/spec/**/*.js'],
   testRequire: [
-    yeoman.app + '/bower_components/angular/angular.js',
-    yeoman.app + '/bower_components/angular-mocks/angular-mocks.js',
-    yeoman.app + '/bower_components/angular-resource/angular-resource.js',
-    yeoman.app + '/bower_components/angular-cookies/angular-cookies.js',
-    yeoman.app + '/bower_components/angular-sanitize/angular-sanitize.js',
-    yeoman.app + '/bower_components/angular-route/angular-route.js',
+    'bower_components/angular/angular.js',
+    'bower_components/angular-mocks/angular-mocks.js',
+    'bower_components/angular-resource/angular-resource.js',
+    'bower_components/angular-cookies/angular-cookies.js',
+    'bower_components/angular-sanitize/angular-sanitize.js',
+    'bower_components/angular-route/angular-route.js',
+    'bower_components/angular-animate/angular-animate.js',
+    'bower_components/angular-touch/angular-touch.js',
+    'bower_components/angular-ui-sortable/sortable.js',
+    'bower_components/angular-local-storage/dist/angular-local-storage.js',
     'test/mock/**/*.js',
     'test/spec/**/*.js'
   ],
-  karma: 'karma.conf.js',
+  karma: yeoman.test + '/karma.conf.js',
   views: {
     main: yeoman.app + '/index.html',
+    bowermain: yeoman.temp + '/index.html',
     files: [yeoman.app + '/views/**/*.html']
   }
 };
@@ -40,16 +48,18 @@ var paths = {
 ////////////////////////
 
 var lintScripts = lazypipe()
-  .pipe($.jshint, '.jshintrc')
-  .pipe($.jshint.reporter, 'jshint-stylish');
+  .pipe($.jshint) // '.jshintrc'
+  .pipe($.jshint.reporter,'jshint-stylish' );
 
 var styles = lazypipe()
   .pipe($.sass, {
     outputStyle: 'expanded',
     precision: 10
   })
-  .pipe($.autoprefixer, 'last 1 version')
-  .pipe(gulp.dest, '.tmp/styles');
+  .pipe($.autoprefixer, {
+    browsers:['last 2 version']
+  })
+  .pipe(gulp.dest,yeoman.temp + '/styles');
 
 ///////////
 // Tasks //
@@ -66,27 +76,33 @@ gulp.task('lint:scripts', function () {
 });
 
 gulp.task('clean:tmp', function (cb) {
-  rimraf('./.tmp', cb);
+  rimraf(yeoman.temp, cb);
 });
 
-gulp.task('start:client', ['start:server', 'styles'], function () {
+gulp.task('start:client', ['start:server', 'styles', 'lint:scripts'], function () {
   openURL('http://localhost:9000');
 });
 
 gulp.task('start:server', function() {
   $.connect.server({
-    root: [yeoman.app, '.tmp'],
-    livereload: true,
-    // Change this to '0.0.0.0' to access the server from outside.
-    port: 9000
+    root:[yeoman.temp, yeoman.app],
+    livereload:true,
+    port: 9000,
+    middleware:function(connect, opt){
+      return [['/bower_components',
+        connect["static"]('./bower_components')]]
+    }
   });
 });
 
 gulp.task('start:server:test', function() {
   $.connect.server({
-    root: ['test', yeoman.app, '.tmp'],
+    root: [yeoman.test, yeoman.app, yeoman.temp],
     livereload: true,
-    port: 9001
+    port: 9001,
+    middleware:function(connect, opt){
+      return [['/bower_components', connect["static"]('./bower_components')]
+    ]}
   });
 });
 
@@ -94,26 +110,25 @@ gulp.task('watch', function () {
   $.watch(paths.styles)
     .pipe($.plumber())
     .pipe(styles())
-    .pipe($.connect.reload());
+    .pipe($.connect.reload())
 
   $.watch(paths.views.files)
     .pipe($.plumber())
-    .pipe($.connect.reload());
+    .pipe($.connect.reload())
 
   $.watch(paths.scripts)
     .pipe($.plumber())
     .pipe(lintScripts())
-    .pipe($.connect.reload());
 
   $.watch(paths.test)
     .pipe($.plumber())
-    .pipe(lintScripts());
 
   gulp.watch('bower.json', ['bower']);
 });
 
 gulp.task('serve', function (cb) {
   runSequence('clean:tmp',
+    ['bower'],
     ['lint:scripts'],
     ['start:client'],
     'watch', cb);
@@ -121,9 +136,14 @@ gulp.task('serve', function (cb) {
 
 gulp.task('serve:prod', function() {
   $.connect.server({
-    root: [yeoman.dist],
-    livereload: true,
-    port: 9000
+    root:[yeoman.dist],
+    livereload:{
+      port:81
+    },
+    port: 80,
+    middleware:function(connect, opt){
+      return [['/bower_components', connect["static"]('./bower_components')]
+    ]}
   });
 });
 
@@ -140,10 +160,10 @@ gulp.task('test', ['start:server:test'], function () {
 gulp.task('bower', function () {
   return gulp.src(paths.views.main)
     .pipe(wiredep({
-      directory: yeoman.app + '/bower_components',
+      directory: /*yeoman.app +*/ 'bower_components',
       ignorePath: '..'
     }))
-  .pipe(gulp.dest(yeoman.app + '/views'));
+  .pipe(gulp.dest(yeoman.temp));
 });
 
 ///////////
@@ -151,15 +171,15 @@ gulp.task('bower', function () {
 ///////////
 
 gulp.task('clean:dist', function (cb) {
-  rimraf('./dist', cb);
+  rimraf(yeoman.dist, cb);
 });
 
-gulp.task('client:build', ['html', 'styles'], function () {
+gulp.task('client:build', ['bower', 'html', 'styles'], function () {
   var jsFilter = $.filter('**/*.js');
   var cssFilter = $.filter('**/*.css');
 
-  return gulp.src(paths.views.main)
-    .pipe($.useref({searchPath: [yeoman.app, '.tmp']}))
+  return gulp.src(paths.views.bowermain)
+    .pipe($.useref({searchPath: [yeoman.app, yeoman.temp]}))
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
     .pipe($.uglify())
@@ -167,8 +187,6 @@ gulp.task('client:build', ['html', 'styles'], function () {
     .pipe(cssFilter)
     .pipe($.minifyCss({cache: true}))
     .pipe(cssFilter.restore())
-    .pipe($.rev())
-    .pipe($.revReplace())
     .pipe(gulp.dest(yeoman.dist));
 });
 
@@ -193,12 +211,17 @@ gulp.task('copy:extras', function () {
 });
 
 gulp.task('copy:fonts', function () {
-  return gulp.src(yeoman.app + '/fonts/**/*')
+  return gulp.src('./bower_components/bootstrap/dist/fonts/**/*')
     .pipe(gulp.dest(yeoman.dist + '/fonts'));
 });
 
-gulp.task('build', ['clean:dist'], function () {
-  runSequence(['images', 'copy:extras', 'copy:fonts', 'client:build']);
+gulp.task('copy:favicon', function () {
+  return gulp.src(yeoman.app + '/favicon.ico')
+    .pipe(gulp.dest(yeoman.dist));
+});
+
+gulp.task('build', ['clean:dist', 'bower'], function () {
+  runSequence(['images', 'copy:extras', 'copy:fonts', 'copy:favicon', 'client:build']);
 });
 
 gulp.task('default', ['build']);
