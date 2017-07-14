@@ -1,12 +1,12 @@
-# schedule-builder
+# Schedule Builder
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.16.0.
+## About
+This app uses Mongo, Express, Angular, and Node (MEAN). Generate all possible schedules for users based on their class selections!
 
-## Build & development
+## Installing and Running
 
-Run `grunt` for building and `grunt serve` for preview.
+```
+npm install
+gulp serve
+```
 
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
