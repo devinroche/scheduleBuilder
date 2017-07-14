@@ -12,9 +12,16 @@
   <div class="col-sm-4 classpanel">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Type to Search</h3>
+        <input class="panel-title" placeholder="Search Classes" ng-model="searchObj"/>
+        <input type="submit" ng-click="submitSearch(searchObj)" />
+        <h5>{{searchObj}}</h5>
       </div>
       <div class="panel-body">
+        <ul>
+          <li ng-repeat="result in resultArr">
+            {{result.Course}} {{result.Days}} {{result.Title}} {{result.Times}}
+          </li>
+        </ul>
       </div>
     </div>
     <button type="button" style="width: 100%;"class="btn btn-success">Generate Schedules</button>

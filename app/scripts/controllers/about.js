@@ -9,15 +9,18 @@
  */
 angular.module('scheduleBuilderApp')
   .controller('AboutCtrl', function($scope, $http, $sce) {
-
-    $http({
-      method: 'GET',
-      url: 'https://schedule-builder-backend.herokuapp.com/api/schedules/?courses=MATH_104'
-    }).then(function successCallback(response) {
-      console.log(response);
-    }, function errorCallback(response) {
-      // called asynchronously if an error occurs
-      // or server returns response with an error status.
-      console.log(response);
-    });
+    $scope.searchObj = "";
+    $scope.resultArr = [];
+    $scope.submitSearch = function(searchParams) {
+      let searchFormat = "?courses="+searchParams;
+      $http({
+        method: 'GET',
+        url: 'https://schedule-builder-backend.herokuapp.com/api/schedules/'+searchFormat
+      }).then(function successCallback(response) {
+          $scope.resultArr = response.data;
+          console.log($scope.resultArr);
+      }, function errorCallback(response) {
+        console.log(response);
+      });
+    }
   });
