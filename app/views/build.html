@@ -5,25 +5,31 @@
         <h3 class="panel-title">Schedule</h3>
       </div>
       <div class="panel-body">
-        Panel content
       </div>
     </div>
   </div>
   <div class="col-sm-4 classpanel">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <input class="panel-title" placeholder="Search Classes" ng-model="searchObj"/>
-        <input type="submit" ng-click="submitSearch(searchObj)" />
-        <h5>{{searchObj}}</h5>
+         <angucomplete-alt id="ex1"
+              placeholder="Search classes"
+              selected-object="addUserClasses"
+              selected-object-data="selectedClass"
+              local-data="allClasses"
+              search-fields="Title,Subject,Course"
+              title-field="Title"
+              description-field="Subject"
+              clear-selected="True"
+              minlength="3"
+              input-class="form-control form-control-small">
+              </angucomplete-alt>
       </div>
       <div class="panel-body">
         <ul>
-          <li ng-repeat="result in resultArr">
-            {{result.Course}} {{result.Days}} {{result.Title}} {{result.Times}}
-          </li>
+          <li ng-repeat="classes in userClasses">{{Title}}</li>
         </ul>
       </div>
     </div>
-    <button type="button" style="width: 100%;"class="btn btn-success">Generate Schedules</button>
+    <button type="button" style="width: 100%;" class="btn btn-success">Generate Schedules</button>
   </div>
 </div>

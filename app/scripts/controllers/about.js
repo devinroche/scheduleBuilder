@@ -12,6 +12,7 @@ angular.module('scheduleBuilderApp')
     $scope.searchObj = "";
     $scope.resultArr = [];
     $scope.allClasses = [];
+
     $scope.submitSearch = function (searchParams) {
       let searchFormat = "?courses=" + searchParams;
       $http({
@@ -19,7 +20,7 @@ angular.module('scheduleBuilderApp')
         url: 'https://schedule-builder-backend.herokuapp.com/api/schedules/' + searchFormat
       }).then(function successCallback(response) {
         $scope.resultArr = response.data;
-        console.log($scope.resultArr);
+        console.log($scope.response.data);
       }, function errorCallback(response) {
         console.log(response);
       });
@@ -34,5 +35,14 @@ angular.module('scheduleBuilderApp')
       console.log(response);
     });
 
-    
+    $scope.userClasses = [];
+    $scope.cleanClasses = []
+    $scope.addUserClasses = function (val) {
+      $scope.userClasses.push(val);
+      console.log($scope.userClasses)
+      angular.forEach($scope.userClasses, function (Title, Course) {
+        $scope.cleanClasses.push(Title.Title);
+        console.log($scope.cleanClasses)
+      })
+    }
   });

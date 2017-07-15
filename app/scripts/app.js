@@ -16,6 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'angucomplete-alt'
   ])
   .config(function($routeProvider, $locationProvider, $sceDelegateProvider) {
     $routeProvider
