@@ -1,21 +1,4 @@
 <div class="row">
-  <div class="col-sm-8 genpanel">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Schedule</h3>
-      </div>
-      <div class="panel-body">
-        <table style="border: 1px solid rebeccapurple" class="table" ng-repeat="schedule in viableSchedules">
-          <tr ng-repeat="classes in schedule">
-            <td>{{classes.Times}}</td>
-            <td>{{classes.Subject}} {{classes.Course}}</td>
-            <td>{{classes.Title}}</td>
-            <td>{{classes.Instructor(s)}}</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
   <div class="col-sm-4 classpanel">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -33,10 +16,25 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6"><button type="button" style="width: 100%;" class="btn btn-danger" ng-click="clearAll()">Clear All</button></div>
-      <div class="col-lg-6"><button type="button" style="width: 100%;" class="btn btn-success" ng-click="generateSchedule(userClasses)">Generate Schedules</button></div>
+      <div class="col-lg-5"><button type="button" style="width: 100%;" class="btn btn-danger btn-lg" ng-click="clearAll()">Clear All</button></div>
+      <div class="col-lg-7"><button type="button" style="width: 100%;" class="btn btn-success btn-lg" ng-click="generateSchedule(userClasses)">Generate Schedules</button></div>
     </div>
-
-
+  </div>
+  <div class="col-sm-8 genpanel">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Schedule</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table" ng-repeat="schedule in viableSchedules">
+          <tr ng-repeat="classes in schedule">
+            <td>{{classes.Times}}</td>
+            <td>{{classes.Class}}</td>
+            <td>{{classes.Title}}</td>
+            <td>{{classes.Instructor(s)}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
