@@ -5,31 +5,28 @@
         <h3 class="panel-title">Schedule</h3>
       </div>
       <div class="panel-body">
+        <ul ng-repeat="schedule in viableSchedules">
+          <li ng-repeat="classes in schedule">{{classes.Times}} {{classes.Subject}} {{classes.Title}}</li>
+        </ul>
       </div>
     </div>
   </div>
   <div class="col-sm-4 classpanel">
     <div class="panel panel-default">
       <div class="panel-heading">
-         <angucomplete-alt id="ex1"
-              placeholder="Search classes"
-              selected-object="addUserClasses"
-              selected-object-data="selectedClass"
-              local-data="allClasses"
-              search-fields="Title,Subject,Course"
-              title-field="Title"
-              description-field="Subject"
-              clear-selected="True"
-              minlength="3"
-              input-class="form-control form-control-small">
-              </angucomplete-alt>
+        <angucomplete-alt id="ex1" placeholder="Search classes" selected-object="addUserClasses" selected-object-data="selectedClass"
+          local-data="allClasses" search-fields="Title,Subject,Course" title-field="Title" description-field="Subject" clear-selected="True"
+          minlength="3" input-class="form-control">
+        </angucomplete-alt>
       </div>
       <div class="panel-body">
         <ul>
-          <li ng-repeat="classes in userClasses">{{Title}}</li>
+          <li ng-repeat="class in userClasses">
+            <p>{{class.title}}, {{class.originalObject.Subject}} {{class.originalObject.Course}}</p>
+          </li>
         </ul>
       </div>
     </div>
-    <button type="button" style="width: 100%;" class="btn btn-success">Generate Schedules</button>
+    <button type="button" style="width: 100%;" class="btn btn-success" ng-click="generateSchedule(userClasses)">Generate Schedules</button>
   </div>
 </div>
