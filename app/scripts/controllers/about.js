@@ -10,27 +10,13 @@
 angular
   .module("scheduleBuilderApp")
   .controller("AboutCtrl", function($scope, $http) {
-    $scope.searchObj = "";
-    $scope.resultArr = [];
     $scope.allClasses = [];
 
-    $scope.submitSearch = function(searchParams) {
-      let searchFormat = "?courses=" + searchParams;
-      $http({
-        method: "GET",
-        url:
-          "https://schedule-builder-backend.herokuapp.com/api/schedules/" +
-          searchFormat
-      }).then(
-        function successCallback(response) {
-          $scope.resultArr = response.data;
-          console.log($scope.response.data);
-        },
-        function errorCallback(response) {
-          console.log(response);
-        }
-      );
-    };
+    $scope.clearAll =function(){
+      $scope.viableSchedules = [];
+      $scope.preReqClasses = [];
+      $scope.userClasses = [];
+    }
     $http({
       method: "GET",
       url: "http://schedule-builder-backend.herokuapp.com/api/classes"

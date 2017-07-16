@@ -5,9 +5,14 @@
         <h3 class="panel-title">Schedule</h3>
       </div>
       <div class="panel-body">
-        <ul ng-repeat="schedule in viableSchedules">
-          <li ng-repeat="classes in schedule">{{classes.Times}} {{classes.Subject}} {{classes.Title}}</li>
-        </ul>
+        <table style="border: 1px solid rebeccapurple" class="table" ng-repeat="schedule in viableSchedules">
+          <tr ng-repeat="classes in schedule">
+            <td>{{classes.Times}}</td>
+            <td>{{classes.Subject}} {{classes.Course}}</td>
+            <td>{{classes.Title}}</td>
+            <td>{{classes.Instructor(s)}}</td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
@@ -27,6 +32,11 @@
         </ul>
       </div>
     </div>
-    <button type="button" style="width: 100%;" class="btn btn-success" ng-click="generateSchedule(userClasses)">Generate Schedules</button>
+    <div class="row">
+      <div class="col-lg-6"><button type="button" style="width: 100%;" class="btn btn-danger" ng-click="clearAll()">Clear All</button></div>
+      <div class="col-lg-6"><button type="button" style="width: 100%;" class="btn btn-success" ng-click="generateSchedule(userClasses)">Generate Schedules</button></div>
+    </div>
+
+
   </div>
 </div>
