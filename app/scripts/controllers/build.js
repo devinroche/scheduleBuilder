@@ -20,32 +20,27 @@ angular
       $scope.userClasses = [];
       toastr("warning", "Potential classes have been cleared");
     };
-    $http({
-      method: "GET",
-      url: baseUrl + "/classes"
-    }).then(
-      function successCallback(response) {
-        $scope.allClasses = response.data;
-        console.log($scope.allClasses);
-      },
-      function errorCallback(response) {
-        console.log(response);
-      }
-    );
+
+    $http.get(baseUrl + "/classes").then(response => {
+      $scope.allClasses = response.data;
+    });
 
     $scope.userClasses = [];
     $scope.addUserClasses = function(val) {
       $scope.userClasses.push(val);
     };
 
-    $scope.removeClass = function(classObj){
-      console.log(classObj)
+    $scope.edit=false;
+    $scope.allowEdit = function(){
+      $scope.edit = !$scope.edit
+    }
+
+    $scope.removeClass = function(classObj) {
       var idx = $scope.userClasses.indexOf(classObj);
-      console.log(idx)
       if (idx > -1) {
         $scope.userClasses.splice(idx, 1);
       }
-    }
+    };
 
     $scope.viableSchedules = [];
     $scope.preReqClasses = [];
@@ -61,20 +56,12 @@ angular
       if ($scope.preReqClasses.length == 0) {
         toastr("error", "One or more classes required");
       } else {
-        toastr("success", "Your schedules are being generated!");
-        $http({
-          method: "POST",
-          data: { classes: $scope.preReqClasses, block: [] },
-          url: baseUrl + "/schedules"
-        }).then(
-          function successCallback(response) {
+        toastr("success", "Your schedules are being prepared!");
+        $http.post(baseUrl + "/schedules", {classes: $scope.preReqClasses,block: []})
+          .then(response => {
             $scope.viableSchedules = response.data;
             console.log($scope.viableSchedules);
-          },
-          function errorCallback(response) {
-            console.log("fail");
-          }
-        );
+          });
       }
     };
   });
