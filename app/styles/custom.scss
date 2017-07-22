@@ -1,143 +1,126 @@
+@import 'colors';
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
 html {
-    background-color: #f0f1f7;
+  background-color: $white;
+  font-family: 'Lato';
+}
+h1 {
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 2px;
 }
 
-body{
-    font-family: Futura;
-    background-color: #f0f1f7;
-}
-
-.navbar-toggle{
-    background-color: transparent;
-    border: none;
+.navbar-toggle {
+  background-color: transparent;
+  border: none;
 }
 
 .active {
-    border-bottom: #F48A2C solid 2px;
+  border-bottom: #f48a2c solid 2px;
 }
-.nav-item{
-    margin-right: 50px;
+.nav-item {
+  margin-right: 50px;
 }
-.nav-link{
-    color: #62697A;
-}
-
-.navbar {
-    margin-top: 25px;
+.nav-link {
+  color: #62697a;
 }
 
 .jumbotron {
-    color: black;
-    text-align: center;
+  color: black;
+  text-align: center;
 }
 
 p {
-    color: black;
+  color: black;
 }
 
-
 .first-p-container {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .step-one-p {
-    text-align: center;
+  text-align: center;
 }
 
 .second-p-container {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .step-three-p {
-    text-align: center;
+  text-align: center;
 }
 
-
 .third-p-container {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .step-two-p {
-    text-align: center;
+  text-align: center;
 }
 
 .step-container {
-    margin-left: 25px;
+  margin-left: 25px;
 }
 
-.sub-header{
-        margin-top: 25px;
-    }
+.sub-header {
+  margin-top: 25px;
+}
 
 /* when the screen size goes below 374 px... */
-@media (max-width: 374px)
-{
-    .navbar-toggler {
+@media (max-width: 374px) {
+  .navbar-toggler {
     display: none;
-    }    
-
+  }
 }
 
-@media (min-width: 320px)
-{
-    .small-sub-header{
-        display: none;
-    }
+@media (min-width: 320px) {
+  .small-sub-header {
+    display: none;
+  }
 }
 
-@media (max-width: 320px)
-{
-   .main-header{
-       display: none;
-    }
-    .sub-header{
-        display: none;
-    }
-    .small-sub-header{
-        display: inline-block;
-    }
+@media (max-width: 320px) {
+  .main-header {
+    display: none;
+  }
+  .sub-header {
+    display: none;
+  }
+  .small-sub-header {
+    display: inline-block;
+  }
 }
 
-
-@media (max-width: 576px)
-{
-    h1{
-        font-size: 32px;
-    }
-
-
+@media (max-width: 576px) {
+  h1 {
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 2px;
+  }
 }
 
+@media (max-width: 576px) and (min-width: 400px) {
+  .first-step {
+    padding-right: 25px;
+  }
+  .third-step {
+    padding-right: 25px;
+  }
+  .first-pic-container {
+    text-align: center;
+  }
 
-@media(max-width: 576px) and (min-width: 400px)
-{
-    .first-step {
-       
-        padding-right: 25px;
-    }
-    .third-step {
-        padding-right: 25px;
-    }
-    .first-pic-container {
-       
-        text-align: center;
-        
-    }
-
-
-    .second-pic-container {
-        text-align: center;
-    }
-    .third-pic-container {
-        text-align: center;
-    }
-    
+  .second-pic-container {
+    text-align: center;
+  }
+  .third-pic-container {
+    text-align: center;
+  }
 }
 
-
-@media(min-width:970px)
-{
-    .container-fluid{
-        width: 970px;
-    }
+@media (min-width: 970px) {
+  .container-fluid {
+    width: 970px;
+  }
 }
