@@ -1,16 +1,17 @@
 <div class="row">
   <div class="col-sm-4 classpanel">
     <div class="panel panel-default">
-      <div class="panel-heading">
+      <div class="panel-heading" >
         <angucomplete-alt id="ex1" placeholder="Search classes" selected-object="addUserClasses" selected-object-data="selectedClass"
           local-data="allClasses" search-fields="Title,Subject,Course" title-field="Title" description-field="Subject" clear-selected="True"
           minlength="3" input-class="form-control">
         </angucomplete-alt>
       </div>
       <div class="panel-body">
-        <ul>
+        <ul class="class-ul">
           <li ng-repeat="class in userClasses">
-            <p>{{class.title}}, {{class.originalObject.Subject}} {{class.originalObject.Course}}</p>
+            <p class="col-lg-9">{{class.title}}, {{class.originalObject.Subject}} {{class.originalObject.Course}}</p>
+            <button type="button" class="btn btn-danger btn-xs col-lg-2 col-lg-offset-1" ng-click="removeClass(class)">X</button>
           </li>
         </ul>
       </div>
@@ -23,17 +24,14 @@
   <div class="col-sm-8 genpanel">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Schedule</h3>
+        <h3 class="panel-title" style="text-align:center;">Schedule</h3>
       </div>
       <div class="panel-body">
-        <table class="table" ng-repeat="schedule in viableSchedules">
-          <tr ng-repeat="classes in schedule">
-            <td>{{classes.Times}}</td>
-            <td>{{classes.Class}}</td>
-            <td>{{classes.Title}}</td>
-            <td>{{classes.Instructor(s)}}</td>
-          </tr>
-        </table>
+        <div ng-repeat="v in viableSchedules">
+          <div ng-repeat="c in v">
+            <div>{{c.Times}} - {{c.Class}} - {{c.Title}} </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
