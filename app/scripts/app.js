@@ -27,8 +27,8 @@ angular
       })
       .when('/build', {
         templateUrl: 'views/build.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+        controller: 'BuildCtrl',
+        controllerAs: 'build'
       })
       .otherwise({
         redirectTo: '/'

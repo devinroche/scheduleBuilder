@@ -6,9 +6,28 @@ html {
   font-family: 'Lato';
 }
 h1 {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 400;
   letter-spacing: 2px;
+}
+.head {
+  text-align: center;
+  padding: 12vh;
+}
+.first-step {
+  padding-right: 25px;
+}
+.third-step {
+  padding-right: 25px;
+}
+
+.third-pic-container,
+.second-pic-container,
+.first-pic-container {
+  p {
+    padding-left: 35px;
+  }
+  text-align: center;
 }
 
 .navbar-toggle {
@@ -20,21 +39,18 @@ h1 {
   border-bottom: #f48a2c solid 2px;
 }
 .nav-item {
-  margin-right: 50px;
+  margin-right: 2vw;
 }
 .nav-link {
   color: #62697a;
 }
 
-.jumbotron {
-  color: black;
-  text-align: center;
-}
-
 p {
   color: black;
 }
-
+.nav-item{
+  font-size: 18px;
+}
 .first-p-container {
   margin-top: 10px;
 }
@@ -60,7 +76,8 @@ p {
 }
 
 .step-container {
-  margin-left: 25px;
+  text-align: center;
+ margin: 0;
 }
 
 .sub-header {
@@ -116,6 +133,7 @@ p {
   }
   .third-pic-container {
     text-align: center;
+    border: 10px solid rebeccapurple;
   }
 }
 

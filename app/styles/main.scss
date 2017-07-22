@@ -52,7 +52,16 @@ body {
     margin-top: 28px;
   }
 }
-
+.class-ul {
+  list-style-type: none;
+  padding-left: 0px;
+  li{
+    padding-left: 0px;
+    p{
+      border-bottom: 1px solid black
+    }
+  }
+}
 .cont {
   width: 1200px;
   margin: 0 auto;

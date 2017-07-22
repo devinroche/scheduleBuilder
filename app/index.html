@@ -3,14 +3,16 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Schedule Builder</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" type="text/css" href="styles/custom.css">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+    crossorigin="anonymous"></script>
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
@@ -20,7 +22,7 @@
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
-  <link rel="stylesheet" href="/bower_components/angucomplete-alt/angucomplete-alt.css"/>
+  <link rel="stylesheet" href="/bower_components/angucomplete-alt/angucomplete-alt.css" />
 </head>
 
 <body ng-app="scheduleBuilderApp">
@@ -31,44 +33,26 @@
   <!-- Add your site or application content here -->
   <div class="header">
     <nav class="navbar navbar-toggleable-sm navbar-light">
-        <a class="navbar-brand" href="#">
-            <img alt="logo" src="https://i.imgur.com/ZEfgorb.png"width="250px">
-        </a>
+      <a class="navbar-brand" href="#">
+        <img alt="logo" src="https://i.imgur.com/ZEfgorb.png"width="250px" style="padding:0px; margin:0px;" />
+      </a>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav nav">
-                <li class="nav-item"><a class="nav-link" href="#">Home </a></li>
-                <li class="nav-item"><a class="nav-link" ng-href="#/build">Build</a></li>
-                <li class="nav-item"><a class="nav-link" ng-href="#/">About</a></li>
-            </ul>
-        </div>
-    </nav>
-    <!-- <div class="navbar navbar-default" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          <a class="navbar-brand" href="#/">Schedule Builder</a>
-        </div>
-        <div class="collapse navbar-collapse" id="js-navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#/">Home</a></li>
-            <li><a ng-href="#/build">Build</a></li>
-            <li><a ng-href="#/">Contact</a></li>
-          </ul>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav nav navbar-right">
+          <li class="nav-item"><a class="nav-link" href="#">Home </a></li>
+          <li class="nav-item"><a class="nav-link" ng-href="#/build">Build</a></li>
+          <li class="nav-item"><a class="nav-link" ng-href="#/">About</a></li>
+        </ul>
       </div>
-    </div> -->
+    </nav>
   </div>
 
   <div class="cont">
     <div ng-view=""></div>
   </div>
 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
@@ -82,14 +66,14 @@
   <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="/bower_components/angular-touch/angular-touch.js"></script>
   <script src="/bower_components/angucomplete-alt.js"></script>
-
   <!-- endbower -->
   <!-- endbuild -->
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="scripts/app.js"></script>
   <script src="scripts/controllers/main.js"></script>
-  <script src="scripts/controllers/about.js"></script>
+  <script src="scripts/controllers/build.js"></script>
+  <script src="scripts/services/toastr.js"></script>
   <!-- endbuild -->
 </body>
 
