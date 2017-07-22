@@ -7,7 +7,7 @@
  * # AboutCtrl
  * Controller of the scheduleBuilderApp
  */
-const baseUrl = "http://schedule-builder-backend.herokuapp.com/api";
+var baseUrl = "http://schedule-builder-backend.herokuapp.com/api";
 
 angular
   .module("scheduleBuilderApp")
@@ -21,7 +21,7 @@ angular
       toastr("warning", "Potential classes have been cleared");
     };
 
-    $http.get(baseUrl + "/classes").then(response => {
+    $http.get(baseUrl + "/classes").then(function(response) {
       $scope.allClasses = response.data;
     });
 
@@ -58,7 +58,7 @@ angular
       } else {
         toastr("success", "Your schedules are being prepared!");
         $http.post(baseUrl + "/schedules", {classes: $scope.preReqClasses,block: []})
-          .then(response => {
+          .then(function(response) {
             $scope.viableSchedules = response.data;
             console.log($scope.viableSchedules);
           });
