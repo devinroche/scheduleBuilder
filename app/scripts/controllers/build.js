@@ -21,7 +21,7 @@ angular
       toastr("warning", "Potential classes have been cleared");
     };
 
-    $http.get(baseUrl + "/classes").then(response => {
+    $http.get(baseUrl + "/classes").then(function(response) {
       $scope.allClasses = response.data;
     });
 
@@ -63,9 +63,7 @@ angular
           })
           .then(function(response) {
             $scope.viableSchedules = response.data;
-            console.log($scope.viableSchedules);
             $scope.viableSize = $scope.viableSchedules.length;
-            console.log($scope.viableSize);
             $scope.schedCount = 0;
             $scope.showCount = $scope.schedCount + 1;
             $scope.vSched = $scope.viableSchedules[$scope.schedCount];
