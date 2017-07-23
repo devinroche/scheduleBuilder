@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-4 classpanel">
     <div class="panel panel-default">
-      <div class="panel-heading" >
+      <div class="panel-heading">
         <angucomplete-alt id="ex1" placeholder="Search classes" selected-object="addUserClasses" selected-object-data="selectedClass"
           local-data="allClasses" search-fields="Title,Subject,Course" title-field="Title" description-field="Subject" clear-selected="True"
           minlength="2" input-class="form-control">
@@ -28,11 +28,13 @@
         <h3 class="panel-title" style="text-align:center;">Schedule</h3>
       </div>
       <div class="panel-body">
-        <div ng-repeat="v in viableSchedules">
-          <div ng-repeat="c in v">
-            <div>{{c.Times}} - {{c.Class}} - {{c.Title}} </div>
-          </div>
-        </div>
+         <div ng-repeat="c in vSched"> 
+            <div>{{c.Times}} - {{c.Class}} - {{c.Title}} - {{c.Instructors}}</div>
+         </div> 
+          <hr/>
+          <button type="button" class="btn btn-warning" ng-click="prevPage()">Back</button>
+          <h4>{{showCount}} / {{viableSize}}</h4>
+          <button type="button" class="btn btn-info" ng-click="nextPage()">Next</button>
       </div>
     </div>
   </div>
