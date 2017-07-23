@@ -30,6 +30,9 @@ angular
         controller: 'BuildCtrl',
         controllerAs: 'build'
       })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+      })
       .otherwise({
         redirectTo: '/'
       });
