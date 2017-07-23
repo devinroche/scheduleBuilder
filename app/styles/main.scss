@@ -1,6 +1,7 @@
 // bower:scss
 // endbower
 @import 'colors';
+@import 'build';
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
 html{
@@ -10,6 +11,9 @@ body {
   background-color: $white;
   font-family: 'Lato';
   padding: 0;
+}
+.navbar{
+  padding-bottom: 10px;
 }
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .footer,
@@ -26,7 +30,7 @@ body {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
-    padding-bottom: 19px;
+    padding-bottom: 0px;
   }
 }
 /* Custom page footer */

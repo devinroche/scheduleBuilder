@@ -13,7 +13,7 @@ angular
   .module("scheduleBuilderApp")
   .controller("BuildCtrl", function($scope, $http, toastr) {
     $scope.allClasses = [];
-
+    $scope.showBtns = false;
     $scope.clearAll = function() {
       $scope.viableSchedules = [];
       $scope.preReqClasses = [];
@@ -67,6 +67,7 @@ angular
             $scope.schedCount = 0;
             $scope.showCount = $scope.schedCount + 1;
             $scope.vSched = $scope.viableSchedules[$scope.schedCount];
+            $scope.showBtns = true;
           });
       }
     };
