@@ -23,15 +23,15 @@
     <div class="panel panel-default">
       <div class="panel-heading panelHead">
         <angucomplete-alt id="ex1" placeholder="Search classes" selected-object="addUserClasses" selected-object-data="selectedClass"
-          local-data="allClasses" search-fields="Title,Subject,Course" title-field="Title" description-field="Subject" clear-selected="True"
+          local-data="allClasses" search-fields="Title,Class,Subject,Course" title-field="Title" description-field="Class" clear-selected="True"
           minlength="2" input-class="form-control">
         </angucomplete-alt>
       </div>
       <div class="panel-body panelStyle">
         <ul class="class-ul">
           <li ng-repeat="class in userClasses">
-            <p class="col-lg-9">{{class.title}}, {{class.originalObject.Subject}} {{class.originalObject.Course}}</p>
-            <button ng-show="edit" type="button" class="btn btn-danger btn-xs col-lg-2 col-lg-offset-1" ng-click="removeClass(class)">X</button>
+            <p class="col-lg-9">{{class.originalObject.Class}} {{class.title}}</p>
+            <button ng-show="edit" type="button" class="btn btn-danger btn-xs col-lg-1 col-lg-offset-2" ng-click="removeClass(class)">X</button>
           </li>
         </ul>
       </div>
