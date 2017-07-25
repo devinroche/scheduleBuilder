@@ -23,6 +23,7 @@ angular
 
     $http.get(baseUrl + "/classes").then(function(response) {
       $scope.allClasses = response.data;
+      console.log($scope.allClasses)
     });
 
     $scope.userClasses = [];
