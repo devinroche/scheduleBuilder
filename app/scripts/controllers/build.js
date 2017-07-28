@@ -69,10 +69,25 @@ angular
             $scope.showCount = $scope.schedCount + 1;
             $scope.vSched = $scope.viableSchedules[$scope.schedCount];
             $scope.showBtns = true;
+            $scope.setClassDay()
           });
       }
     };
 
+    $scope.mwf = []
+    $scope.tr = []
+    $scope.setClassDay = function(){
+      for (var i=0; i<$scope.vSched.length; i++){
+        console.log($scope.vSched[i])
+        if($scope.vSched[i].Days =='MWF' || $scope.vSched[i].Days =='M' || $scope.vSched[i].Days =='W' || $scope.vSched[i].Days =='F'){
+          $scope.mwf.push($scope.vSched[i])
+        }else if($scope.vSched[i].Days =='TR' || $scope.vSched[i].Days =='T' || $scope.vSched[i].Days =='TR'){
+          $scope.tr.push($scope.vSched[i])
+        }
+      }
+
+      console.log($scope.mwf, $scope.tr)
+    }
     // Next and Prev page loads the schedule before or after your current schedule!
     $scope.nextPage = function() {
       if ($scope.schedCount == $scope.viableSize - 1) {
