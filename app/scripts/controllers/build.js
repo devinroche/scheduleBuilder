@@ -57,12 +57,12 @@ angular
         toastr("error", "One or more classes required");
       } else {
         toastr("success", "Your schedules are being prepared!");
-        $http
-          .post(baseUrl + "/schedules", {
+        $http.post(baseUrl + "/schedules", {
             classes: $scope.preReqClasses,
             block: []
           })
           .then(function(response) {
+            console.log(response.data)
             $scope.viableSchedules = response.data;
             $scope.viableSize = $scope.viableSchedules.length;
             $scope.schedCount = 0;
@@ -72,6 +72,8 @@ angular
           });
       }
     };
+
+    // Next and Prev page loads the schedule before or after your current schedule!
     $scope.nextPage = function() {
       if ($scope.schedCount == $scope.viableSize - 1) {
         $scope.schedCount = 0;
