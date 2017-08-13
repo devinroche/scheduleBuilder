@@ -1,15 +1,19 @@
 // bower:scss
 // endbower
+@import 'colors';
+@import 'build';
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+html{
+  background-color: $white;
 }
-
 body {
+  background-color: $white;
+  font-family: 'Lato';
   padding: 0;
+}
+.navbar{
+  padding-bottom: 10px;
 }
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .footer,
@@ -20,22 +24,16 @@ body {
 }
 /* Custom page header */
 .header {
-  border-bottom: 0px solid #e5e5e5;
   margin-bottom: 10px;
   /* Make the masthead heading the same height as the navigation */
   h3 {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
-    padding-bottom: 19px;
+    padding-bottom: 0px;
   }
 }
 /* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
 
 .container-narrow > hr {
   margin: 30px 0;
@@ -43,7 +41,7 @@ body {
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $dark-blue;
 
   .btn {
     font-size: 21px;
@@ -58,7 +56,16 @@ body {
     margin-top: 28px;
   }
 }
-
+.class-ul {
+  list-style-type: none;
+  padding-left: 0px;
+  li{
+    padding-left: 0px;
+    p{
+      border-bottom: 1px solid black
+    }
+  }
+}
 .cont {
   width: 1200px;
   margin: 0 auto;
