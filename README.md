@@ -19,13 +19,13 @@ npm install && bower install && gulp serve
 ```
 
 ## Built With
-1. [Mongo] (https://www.mongodb.com/)
-2. [Express.js] (https://expressjs.com/)
-3. [Angular.js] (https://angularjs.org/)
-4. [Node.js] (https://nodejs.org/en/)
+1. [Mongo](https://www.mongodb.com/)
+2. [Express.js](https://expressjs.com/)
+3. [Angular.js](https://angularjs.org/)
+4. [Node.js](https://nodejs.org/en/)
 
 ## Authors
-1. [Devin Roche] (https://github.com/devinroche)
-2. [TJ Durnford] (https://github.com/tdurnford)
-3. [George Kunthara] (https://github.com/gkunthara) 
+1. [Devin Roche](https://github.com/devinroche)
+2. [TJ Durnford](https://github.com/tdurnford)
+3. [George Kunthara](https://github.com/gkunthara) 
 
