@@ -7,7 +7,7 @@
       </div>
       <div class="panel-body panel2 ">
         <div class="row schedBody">
-          <!-- <table class="table">
+          <table class="table">
             <thead>
               <tr>
                 <th>Time</th>
@@ -26,44 +26,7 @@
                 <td>{{c.Instructors}}</td>
               </tr>
             </tbody>
-          </table> -->
-
-          <table class="table">
-            <thead>
-              <th>
-                MONDAY WEDNESDAY FRIDAY
-              </th>
-            </thead>
-            <tbody>
-              <tr ng-repeat="m in mwf">
-                <td>{{m.Times}}</td>
-                <td>{{m.Days}}</td>
-                <td>{{m.Class}}</td>
-                <td>{{m.Title}}</td>
-                <td>{{m.Instructors}}</td>
-              </tr>
-            </tbody>
           </table>
-
-          <table class="table">
-            <thead>
-              <th>
-                TUESDAY THURSDAY
-              </th>
-            </thead>
-            <tbody>
-              <tr ng-repeat="t in tr">
-                <td>{{t.Times}}</td>
-                <td>{{t.Days}}</td>
-                <td>{{t.Class}}</td>
-                <td>{{t.Title}}</td>
-                <td>{{t.Instructors}}</td>
-              </tr>
-            </tbody>
-          </table>
-          <!-- <div ng-repeat="c in vSched">
-            <div>{{c.Times}} - {{c.Days}} - {{c.Class}} - {{c.Title}} - {{c.Instructors}}</div>
-          </div> -->
         </div>
         <div ng-show="showBtns" class="row btnBody" style="text-align: center;">
           <hr/>
