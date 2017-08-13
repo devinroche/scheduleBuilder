@@ -7,22 +7,21 @@
  * # AboutCtrl
  * Controller of the scheduleBuilderApp
  */
-const baseUrl = "http://schedule-builder-backend.herokuapp.com/api";
-
 angular
   .module("scheduleBuilderApp")
-  .controller("BuildCtrl", function($scope, $http, toastr) {
+  .controller("BuildCtrl", function($scope, $http, toastr, httpService) {
     $scope.allClasses = [];
     $scope.showBtns = false;
+
     $scope.clearAll = function() {
       $scope.viableSchedules = [];
-      $scope.preReqClasses = [];
+      $scope.formatRequest = [];
       $scope.userClasses = [];
       toastr("warning", "Potential classes have been cleared");
     };
 
-    $http.get(baseUrl + "/classes").then(function(response) {
-      $scope.allClasses = response.data;
+    httpService.getClasses().then(function(r) {
+      $scope.allClasses = r.data;
     });
 
     $scope.userClasses = [];
@@ -30,8 +29,8 @@ angular
       $scope.userClasses.push(course);
     };
 
-    $scope.edit = false;
-    $scope.allowEdit = function() {
+    $scope.edit = true;
+    $scope.toggleEdit = function() {
       $scope.edit = !$scope.edit;
     };
 
@@ -40,56 +39,50 @@ angular
       if (idx > -1) {
         $scope.userClasses.splice(idx, 1);
       }
+      console.log($scope.userClasses)
     };
-    
+  
+    var schedCount = 0;
+    var viableSchedules = []
     $scope.viableSchedules = [];
-    $scope.preReqClasses = [];
+    $scope.formatRequest = [];
     $scope.generateSchedule = function(classArr) {
       for (var i = 0; i < classArr.length; i++) {
-        $scope.preReqClasses.push(
-          classArr[i].originalObject.Subject +
-            " " +
-            classArr[i].originalObject.Course
-        );
+        $scope.formatRequest.push(classArr[i].description);
       }
 
-      if ($scope.preReqClasses.length == 0) {
+      if ($scope.formatRequest.length == 0) {
         toastr("error", "One or more classes required");
       } else {
         toastr("success", "Your schedules are being prepared!");
-        $http.post(baseUrl + "/schedules", {
-            classes: $scope.preReqClasses,
-            block: []
-          })
-          .then(function(response) {
-            $scope.viableSchedules = response.data;
-            $scope.viableSize = $scope.viableSchedules.length;
-            $scope.schedCount = 0;
-            $scope.showCount = $scope.schedCount + 1;
-            $scope.vSched = $scope.viableSchedules[$scope.schedCount];
-            $scope.showBtns = true;
-            $scope.setClassDay()
-          });
+        var submissionObj = { classes: $scope.formatRequest, block: [] };
+        httpService.postClass(submissionObj).then(function(r) {
+          viableSchedules = r.data;
+          $scope.viableSize = viableSchedules.length;
+          $scope.showCount = schedCount + 1;
+          $scope.vSched = viableSchedules[schedCount];
+          $scope.showBtns = true;
+        });
       }
     };
 
     // Next and Prev page loads the schedule before or after your current schedule!
     $scope.nextPage = function() {
-      if ($scope.schedCount == $scope.viableSize - 1) {
-        $scope.schedCount = 0;
+      if (schedCount == $scope.viableSize - 1) {
+        schedCount = 0;
       } else {
-        $scope.schedCount = $scope.schedCount + 1;
+        schedCount = schedCount + 1;
       }
-      $scope.showCount = $scope.schedCount + 1;
-      $scope.vSched = $scope.viableSchedules[$scope.schedCount];
+      $scope.showCount = schedCount + 1;
+      $scope.vSched = viableSchedules[schedCount];
     };
     $scope.prevPage = function() {
-      if ($scope.schedCount == 0) {
-        $scope.schedCount = $scope.viableSize - 1;
+      if (schedCount == 0) {
+        schedCount = $scope.viableSize - 1;
       } else {
-        $scope.schedCount = $scope.schedCount - 1;
+        schedCount = schedCount - 1;
       }
-      $scope.showCount = $scope.schedCount + 1;
-      $scope.vSched = $scope.viableSchedules[$scope.schedCount];
+      $scope.showCount = schedCount + 1;
+      $scope.vSched = viableSchedules[schedCount];
     };
   });
