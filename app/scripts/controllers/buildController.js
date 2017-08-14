@@ -62,6 +62,15 @@ angular
           $scope.showCount = schedCount + 1;
           $scope.vSched = viableSchedules[schedCount];
           $scope.showBtns = true;
+
+          var tmpTime = [];
+          var tmpDay = []
+          for(var i =0; i < $scope.vSched.length; i++){
+            tmpTime.push($scope.vSched[i].Times.split(" "))
+            tmpDay.push($scope.vSched[i].Days);
+          }
+          console.log(tmpDay);
+          console.log(tmpTime[0])
         });
       }
     };
