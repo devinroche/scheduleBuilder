@@ -22,6 +22,7 @@ angular
 
     httpService.getClasses().then(function(r) {
       $scope.allClasses = r.data;
+      console.log('ready to go!')
     });
 
     $scope.userClasses = [];
@@ -71,6 +72,11 @@ angular
           }
           console.log(tmpDay);
           console.log(tmpTime[0])
+          var foobar = tmpTime[0].splice(0, 1)
+          foobar =foobar.pop().slice(0, 5)
+          console.log(foobar)
+          var poopy = new Date().setHours(foobar.slice(0,1))
+          console.log(poopy.toUTCString())
         });
       }
     };
