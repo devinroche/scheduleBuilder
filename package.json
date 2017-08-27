@@ -39,5 +39,5 @@
   },
   "scripts": {
     "postinstall": "bower install && npm install"
-  },
+  }
 }
