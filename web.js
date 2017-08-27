@@ -4,10 +4,11 @@ const http = require('http')
 const app = express();
 
 var app = express()
-app.use(gzippo.staticGzip(''+__dirname))
-app.use('/*', function(req, res){
-    res.sendfile(__dirname+'/index.html')
-})
+app.use(express.static(__dirname + '/dist'))
 
-var server = http.createServer(app)
-server.listenerCount(process.env.PORT || 5000)
+// app.use(gzippo.staticGzip(''+__dirname))
+// app.use('/*', function(req, res){
+//     res.sendfile(__dirname+'/index.html')
+// })
+
+app.listen(process.env.PORT || 5000)
