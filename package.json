@@ -36,5 +36,8 @@
     "express": "^4.15.4",
     "gzippo": "^0.2.0",
     "lodash": "^4.17.4"
-  }
+  },
+  "scripts": {
+    "postinstall": "bower install && npm install"
+  },
 }
