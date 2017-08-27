@@ -3,7 +3,6 @@ const express = require('express');
 const http = require('http')
 const app = express();
 
-var app = express()
 app.use(express.static(__dirname + '/dist'))
 
 // app.use(gzippo.staticGzip(''+__dirname))
