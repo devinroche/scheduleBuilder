@@ -38,6 +38,6 @@
     "lodash": "^4.17.4"
   },
   "scripts": {
-    "postinstall": "bower install && npm install"
+    "postinstall": "bower install"
   }
 }
