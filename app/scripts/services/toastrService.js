@@ -10,7 +10,7 @@
 angular.module('scheduleBuilderApp')
   .service('toastr', function () {
     var toastrInit = function (type, msg){
-      console.log('poop')
+      console.log('poop');
       toastr.options = {
         "closeButton": false,
         "debug": false,
@@ -28,6 +28,6 @@ angular.module('scheduleBuilderApp')
         "hideMethod": "fadeOut"
       };
       toastr[type](msg);
-    }
-    return toastrInit
+    };
+    return toastrInit;
   });
