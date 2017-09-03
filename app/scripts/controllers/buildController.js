@@ -71,18 +71,44 @@ angular
             tmpDay.push($scope.vSched[i].Days);
           }
           console.log(tmpDay);
-          console.log(tmpTime[0]);
           console.log(tmpTime);
-          var foobar = tmpTime[0].splice(0, 1);
-          foobar =foobar.pop().slice(0, 5);
-          console.log(foobar);
-          var now = new Date();
-          var poopy = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), foobar.slice(0, 1));
-          console.log(poopy.toISOString());
-          console.log(poopy.toUTCString());
+          time2utc(tmpTime)
+          // var foobar = tmpTime[0].splice(0, 1);
+          // console.log(foobar);
+          // foobar = foobar.pop().slice(0, 5);
+          // console.log(foobar);
+          // var now = new Date();
+          // var poopy = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), foobar.slice(0, 1));
+          // console.log(poopy.toISOString());
+          // console.log(poopy.toUTCString());
         });
       }
-    };
+    }; 
+
+    var scheduleUtc = []
+    var time2utc = function(timeArr){
+      for(var i=0; i<timeArr.length; i++){
+        var tmpVar = timeArr[i].splice(0, 1);
+        if (tmpVar !== '-'){
+          tmpVar = tmpVar.pop().slice(0, 5);
+          var now = new Date();
+          var poopy = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), tmpVar.slice(0, 1));
+          console.log(poopy.toISOString());
+          console.log(poopy.toUTCString());
+          scheduleUtc.push(poopy.toISOString());
+        }
+      }
+      console.log(scheduleUtc)
+
+      // var foobar = timeArr[0].splice(0, 1);
+      // console.log(foobar);
+      // foobar = foobar.pop().slice(0, 5);
+      // console.log(foobar);
+      // var now = new Date();
+      // var poopy = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), foobar.slice(0, 1));
+      // console.log(poopy.toISOString());
+      // console.log(poopy.toUTCString());
+    }
 
     // Next and Prev page loads the schedule before or after your current schedule!
     $scope.nextPage = function() {
