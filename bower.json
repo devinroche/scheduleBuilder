@@ -24,6 +24,12 @@
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js"
       ]
+    },
+    "angucomplete-alt": {
+      "main": [
+        "angucomplete-alt.css",
+        "dist/angucomplete-alt.min.js"
+      ]
     }
   }
 }
