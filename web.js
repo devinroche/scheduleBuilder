@@ -3,12 +3,6 @@ const express = require('express');
 const http = require('http')
 const app = express();
 
-var app = express()
-app.use(express.static(__dirname + '/dist'))
-
-// app.use(gzippo.staticGzip(''+__dirname))
-// app.use('/*', function(req, res){
-//     res.sendfile(__dirname+'/index.html')
-// })
-
-app.listen(process.env.PORT || 5000)
+app.use(express.logger('dev'));
+app.use(gzippo.staticGzip("" + __dirname + "/dist"));
+app.listen(process.env.PORT || 5000);

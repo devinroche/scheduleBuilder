@@ -1,0 +1,36 @@
+.panelStyle {
+  height: 55vh;
+  max-height: 55vh;
+  overflow-y: scroll;
+  -webkit-box-shadow: 0px 0px 35px 3px rgba(217, 217, 217, 0.72);
+  -moz-box-shadow: 0px 0px 35px 3px rgba(217, 217, 217, 0.72);
+  box-shadow: 0px 0px 35px 3px rgba(217, 217, 217, 0.72); }
+
+.panel-body {
+  padding-top: 5px; }
+
+.panel2 {
+  -webkit-box-shadow: 0px 0px 35px 3px rgba(217, 217, 217, 0.72);
+  -moz-box-shadow: 0px 0px 35px 3px rgba(217, 217, 217, 0.72);
+  box-shadow: 0px 0px 35px 3px rgba(217, 217, 217, 0.72);
+  height: 74vh;
+  max-height: 74vh;
+  overflow-y: scroll; }
+  .panel2 th {
+    text-align: center; }
+  .panel2 .schedBody {
+    height: 80%; }
+    .panel2 .schedBody table {
+      text-align: center; }
+  .panel2 .btnBody {
+    height: 20%; }
+    .panel2 .btnBody .i1 {
+      margin-left: 10px; }
+    .panel2 .btnBody .i2 {
+      margin-right: 10px; }
+
+.panelHead {
+  height: 8vh; }
+  .panelHead h2 {
+    font-size: 18px;
+    padding: 6px 0px; }

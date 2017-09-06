@@ -6,8 +6,6 @@
   <title>Schedule Builder</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" type="text/css" href="styles/custom.css">
-  <link rel="stylesheet" type="text/css" href="styles/about.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -19,7 +17,9 @@
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" type="text/css" href="styles/scss/custom.css">
+  <link rel="stylesheet" type="text/css" href="styles/scss/about.css">
+  <link rel="stylesheet" href="styles/scss/main.css">
   <!-- endbuild -->
   <link rel="stylesheet" href="/bower_components/angucomplete-alt/angucomplete-alt.css" />
 </head>
@@ -39,8 +39,8 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav nav navbar-right">
           <li class="nav-item"><a class="nav-link" href="#">Home </a></li>
-          <li class="nav-item"><a class="nav-link" ng-href="#/build">Build</a></li>
           <li class="nav-item"><a class="nav-link" ng-href="#/about">About</a></li>
+          <li class="nav-item"><a class="nav-link" ng-href="#/build">Build</a></li>
         </ul>
       </div>
     </nav>
@@ -70,9 +70,10 @@
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="scripts/app.js"></script>
-  <script src="scripts/controllers/main.js"></script>
-  <script src="scripts/controllers/build.js"></script>
-  <script src="scripts/services/toastr.js"></script>
+  <script src="scripts/controllers/mainController.js"></script>
+  <script src="scripts/controllers/buildController.js"></script>
+  <script src="scripts/services/toastrService.js"></script>
+  <script src="scripts/services/httpService.js"></script>
   <!-- endbuild -->
 </body>
 
