@@ -2,7 +2,7 @@
   "name": "schedulebuilder",
   "private": true,
   "scripts": {
-    "scss" : "node-sass --watch app/styles/scss -o app/styles/css"
+    "scss": "node-sass --watch app/styles/scss -o app/styles/css"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -36,9 +36,10 @@
   },
   "dependencies": {
     "angucomplete-alt": "^3.0.0",
-    "lodash": "^4.17.4",
-    "node-sass": "^4.5.3",
     "express": "^4.15.4",
-    "gzippo": "^0.2.0"
+    "gzippo": "^0.2.0",
+    "lodash": "^4.17.4",
+    "morgan": "^1.8.2",
+    "node-sass": "^4.5.3"
   }
 }
