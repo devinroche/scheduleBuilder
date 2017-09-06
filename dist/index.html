@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Schedule Builder</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="styles/custom.css">
+  <link rel="stylesheet" type="text/css" href="styles/about.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="icon" type="image/ico" href="../favicon.ico">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="stylesheet" href="styles/vendor.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="/bower_components/angucomplete-alt/angucomplete-alt.css" />
+</head>
+
+<body ng-app="scheduleBuilderApp">
+  <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+  <!-- Add your site or application content here -->
+  <div class="header">
+    <nav class="navbar navbar-toggleable-sm navbar-light">
+      <a class="navbar-brand" href="#">
+        <img alt="logo" src="https://i.imgur.com/ZEfgorb.png" width="250px" style="padding:0px; margin:0px;" />
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav nav navbar-right">
+          <li class="nav-item"><a class="nav-link" href="#">Home </a></li>
+          <li class="nav-item"><a class="nav-link" ng-href="#/build">Build</a></li>
+          <li class="nav-item"><a class="nav-link" ng-href="#/about">About</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="cont">
+    <div ng-view=""></div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+  <script src="scripts/vendor.js"></script>
+
+  <script src="scripts/scripts.js"></script>
+</body>
+
+</html>
