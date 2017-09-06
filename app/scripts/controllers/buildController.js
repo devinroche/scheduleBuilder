@@ -99,15 +99,6 @@ angular
         }
       }
       console.log(scheduleUtc)
-
-      // var foobar = timeArr[0].splice(0, 1);
-      // console.log(foobar);
-      // foobar = foobar.pop().slice(0, 5);
-      // console.log(foobar);
-      // var now = new Date();
-      // var poopy = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), foobar.slice(0, 1));
-      // console.log(poopy.toISOString());
-      // console.log(poopy.toUTCString());
     }
 
     // Next and Prev page loads the schedule before or after your current schedule!

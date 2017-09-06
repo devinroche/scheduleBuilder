@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+.panelStyle {
+  height: 55vh;
+  max-height: 55vh;
+  overflow-y: scroll;
+  -webkit-box-shadow: 0px 0px 35px 3px rgba(217, 217, 217, 0.72);
+  -moz-box-shadow: 0px 0px 35px 3px rgba(217, 217, 217, 0.72);
+  box-shadow: 0px 0px 35px 3px rgba(217, 217, 217, 0.72); }
+
+.panel-body {
+  padding-top: 5px; }
+
+.panel2 {
+  -webkit-box-shadow: 0px 0px 35px 3px rgba(217, 217, 217, 0.72);
+  -moz-box-shadow: 0px 0px 35px 3px rgba(217, 217, 217, 0.72);
+  box-shadow: 0px 0px 35px 3px rgba(217, 217, 217, 0.72);
+  height: 74vh;
+  max-height: 74vh;
+  overflow-y: scroll; }
+  .panel2 th {
+    text-align: center; }
+  .panel2 .schedBody {
+    height: 80%; }
+    .panel2 .schedBody table {
+      text-align: center; }
+  .panel2 .btnBody {
+    height: 20%; }
+    .panel2 .btnBody .i1 {
+      margin-left: 10px; }
+    .panel2 .btnBody .i2 {
+      margin-right: 10px; }
+
+.panelHead {
+  height: 8vh; }
+  .panelHead h2 {
+    font-size: 18px;
+    padding: 6px 0px; }
+
+html {
+  background-color: #ecf0f1; }
+
+body {
+  background-color: #ecf0f1;
+  font-family: 'Lato';
+  padding: 0; }
+
+.navbar {
+  padding-bottom: 10px; }
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.footer,
+.header,
+.marketing {
+  padding-left: 15px;
+  padding-right: 15px; }
+
+/* Custom page header */
+.header {
+  margin-bottom: 10px;
+  /* Make the masthead heading the same height as the navigation */ }
+  .header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 0px; }
+
+/* Custom page footer */
+.container-narrow > hr {
+  margin: 30px 0; }
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #1B1E23; }
+  .jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px; }
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0; }
+  .marketing p + h4 {
+    margin-top: 28px; }
+
+.class-ul {
+  list-style-type: none;
+  padding-left: 0px; }
+  .class-ul li {
+    padding-left: 0px; }
+    .class-ul li p {
+      border-bottom: 1px solid black; }
+
+.cont {
+  width: 1200px;
+  margin: 0 auto; }
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px; }
+  /* Remove the padding we set earlier */
+  .footer,
+  .header,
+  .marketing {
+    padding-left: 0;
+    padding-right: 0; }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px; }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0; } }
