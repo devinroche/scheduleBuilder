@@ -20,8 +20,10 @@ angular
       toastr("warning", "Potential classes have been cleared");
     };
 
+    console.time('class load')
     httpService.getClasses().then(function(r) {
       $scope.allClasses = r.data;
+      console.timeEnd('class load')
       console.log('classes are ready to go!');
     });
 
@@ -71,16 +73,7 @@ angular
             tmpDay.push($scope.vSched[i].Days);
           }
           console.log(tmpDay);
-          console.log(tmpTime);
           time2utc(tmpTime)
-          // var foobar = tmpTime[0].splice(0, 1);
-          // console.log(foobar);
-          // foobar = foobar.pop().slice(0, 5);
-          // console.log(foobar);
-          // var now = new Date();
-          // var poopy = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), foobar.slice(0, 1));
-          // console.log(poopy.toISOString());
-          // console.log(poopy.toUTCString());
         });
       }
     }; 
@@ -100,6 +93,16 @@ angular
       }
       console.log(scheduleUtc)
     }
+
+    $(document).ready(function() {
+      
+          // page is now ready, initialize the calendar...
+      
+          $('#calendar').fullCalendar({
+              // put your options and callbacks here
+          })
+      
+      });
 
     // Next and Prev page loads the schedule before or after your current schedule!
     $scope.nextPage = function() {

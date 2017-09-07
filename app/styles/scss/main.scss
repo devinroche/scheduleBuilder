@@ -2,13 +2,13 @@
 // endbower
 @import 'colors';
 @import 'build';
-
+@import url('https://fonts.googleapis.com/css?family=Lato');
 html{
   background-color: $white;
 }
 body {
   background-color: $white;
-  font-family: Helvetica;
+  font-family: 'Lato';
   padding: 0;
 }
 .navbar{
