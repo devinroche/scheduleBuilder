@@ -31,7 +31,6 @@ var paths = {
     'bower_components/angular-animate/angular-animate.js',
     'bower_components/angular-touch/angular-touch.js',
     'bower_components/angular-ui-sortable/sortable.js',
-    'bower_components/angucomplete-alt/angucomplete-alt.js',
     'bower_components/angular-local-storage/dist/angular-local-storage.js',
     'test/mock/**/*.js',
     'test/spec/**/*.js'
