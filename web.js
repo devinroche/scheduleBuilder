@@ -8,8 +8,8 @@ const app = express();
 
 app.use(csp({
     directives: {
-        defaultSrc: [`'self'`],
-        imgSrc: ['imgur.com'],
+        defaultSrc: [`'self'`, 'https://schedule-builder-backend.herokuapp.com/api/'],
+        imgSrc: ['imgur.com', 'https://thumb.ibb.co'],
         styleSrc: ['https://maxcdn.bootstrapcdn.com', 'https://cdnjs.cloudflare.com']
     }
 }))
