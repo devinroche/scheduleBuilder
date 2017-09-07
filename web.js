@@ -2,8 +2,17 @@ const gzippo = require('gzippo')
 const express = require('express');
 const http = require('http')
 const logger = require('morgan')
+const csp = require('helmet-csp')
 
 const app = express();
+
+app.use(csp({
+    directives: {
+        defaultSrc: [`'self'`],
+        imgSrc: ['imgur.com'],
+        styleSrc: ['https://maxcdn.bootstrapcdn.com', 'https://cdnjs.cloudflare.com']
+    }
+}))
 
 app.use(logger());
 app.use(gzippo.staticGzip('' + __dirname + "/dist"));
