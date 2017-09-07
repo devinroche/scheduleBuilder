@@ -4,9 +4,11 @@
 
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Content-Security-Policy" 
+      content="default-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; script-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval';">
   <title>Schedule Builder</title>
   <meta name="description" content="">
-  <meta http-equiv="Content-Security-Policy" content="default-src https://cdn.example.net; font-src 'self' data: ; child-src 'none'; object-src 'none'">
   <meta name="viewport" content="width=device-width">  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
@@ -26,7 +28,7 @@
   <!-- endbuild -->
 </head>
 
-<body ng-app="scheduleBuilderApp" ng-csp>
+<body ng-app="scheduleBuilderApp">
   <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
