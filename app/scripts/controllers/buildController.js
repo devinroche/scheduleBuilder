@@ -15,6 +15,10 @@ angular
 
     $scope.clearAll = function() {
       $scope.viableSchedules = [];
+      viableSchedules = []
+      $scope.showBtns = false;
+      $scope.vSched = []
+      schedCount = 0
       $scope.formatRequest = [];
       $scope.userClasses = [];
       toastr("warning", "Potential classes have been cleared");
@@ -94,15 +98,15 @@ angular
       console.log(scheduleUtc)
     }
 
-    $(document).ready(function() {
+    // $(document).ready(function() {
       
-          // page is now ready, initialize the calendar...
+    //       // page is now ready, initialize the calendar...
       
-          $('#calendar').fullCalendar({
-              // put your options and callbacks here
-          })
+    //       $('#calendar').fullCalendar({
+    //           // put your options and callbacks here
+    //       })
       
-      });
+    //   });
 
     // Next and Prev page loads the schedule before or after your current schedule!
     $scope.nextPage = function() {
