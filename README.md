@@ -1,4 +1,4 @@
-# [Schedule Builder](https://schedulebuilder-app.herokuapp.com/#/)
+# [Schedule Builder](http://www.schedulebuilder.party)
 
 This app uses Mongo, Express, Angular, and Node (MEAN). Generate all possible schedules for users based on their class selections! This project is tied to the [Schedule Builder Backend](https://github.com/tdurnford/schedule-builder-backend). We intended to redo the program once made as a Java Applet (it stunk) using modern web developmen technologies! 
 
@@ -26,4 +26,3 @@ npm install && bower install && gulp serve
 1. [Devin Roche](https://github.com/devinroche)
 2. [TJ Durnford](https://github.com/tdurnford)
 3. [George Kunthara](https://github.com/gkunthara) 
-
