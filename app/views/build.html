@@ -19,7 +19,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="c in vSched">
+              <tr ng-repeat="c in vSched" ng-click="moreInfo(c)">
                 <td>{{c.Times}}</td>
                 <td>{{c.Days}}</td>
                 <td>{{c.Class}}</td>

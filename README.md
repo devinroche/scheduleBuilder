@@ -23,6 +23,6 @@ npm install && bower install && gulp serve
 4. [Node.js](https://nodejs.org/en/)
 
 ## Team
-1. [Devin Roche](https://github.com/devinroche)
-2. [TJ Durnford](https://github.com/tdurnford)
-3. [George Kunthara](https://github.com/gkunthara) 
+1. [Devin Roche](https://github.com/devinroche): Frontend Dev
+2. [TJ Durnford](https://github.com/tdurnford): Backend Dev
+3. [George Kunthara](https://github.com/gkunthara): CSS God

@@ -9,7 +9,7 @@
  */
 angular
   .module("scheduleBuilderApp")
-  .controller("BuildCtrl", function($scope, $http, toastr, httpService) {
+  .controller("BuildCtrl",['SweetAlert', function($scope, $http, toastr, httpService) {
     $scope.allClasses = [];
     $scope.showBtns = false;
 
@@ -127,4 +127,10 @@ angular
       $scope.showCount = schedCount + 1;
       $scope.vSched = viableSchedules[schedCount];
     };
-  });
+
+    $scope.moreInfo = function(classInfo){
+      SweetAlert.swal("I'm a fancy Alert"); //simple alert      
+      console.log(classInfo)
+    }
+
+  }]);
