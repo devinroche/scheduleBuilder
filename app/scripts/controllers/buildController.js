@@ -36,7 +36,7 @@ angular
       $scope.userClasses.push(course);
     };
 
-    $scope.edit = true;
+    $scope.edit = false;
     $scope.toggleEdit = function() {
       $scope.edit = !$scope.edit;
     };
