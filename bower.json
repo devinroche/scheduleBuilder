@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "dependencies": {
     "angular": "^1.4.0",
-    "bootstrap": "^3.2.0",
     "angular-animate": "^1.4.0",
     "angular-cookies": "^1.4.0",
     "angular-resource": "^1.4.0",
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
-    "angucomplete-alt": "^3.0.0"
+    "angucomplete-alt": "^3.0.0",
+    "MDBootstrap": "latest"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
