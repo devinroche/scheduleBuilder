@@ -69,7 +69,7 @@ angular
           $scope.showCount = schedCount + 1;
           $scope.vSched = viableSchedules[schedCount];
           $scope.showBtns = true;
-
+          // $scope.showCalendar();
           var tmpTime = [];
           var tmpDay = [];
           for(var i =0; i < $scope.vSched.length; i++){
@@ -81,7 +81,6 @@ angular
         });
       }
     }; 
-
     var scheduleUtc = []
     var time2utc = function(timeArr){
       for(var i=0; i<timeArr.length; i++){
@@ -98,15 +97,21 @@ angular
       console.log(scheduleUtc)
     }
 
-    // $(document).ready(function() {
-      
-    //       // page is now ready, initialize the calendar...
-      
-    //       $('#calendar').fullCalendar({
-    //           // put your options and callbacks here
-    //       })
-      
-    //   });
+    // $scope.showCalendar = function(){
+      $(document).ready(function() {
+        $('#calendar').fullCalendar({
+          defaultView: 'agendaWeek',
+          defaultDate: '2017-08-28',
+          navLinks: true,
+          allDaySlot: false,
+          weekends: false,
+          minTime: "07:00:00",
+          maxTime: "22:00:00",
+          contentHeight: 600
+        });
+        
+      });
+    // }
 
     // Next and Prev page loads the schedule before or after your current schedule!
     $scope.nextPage = function() {
