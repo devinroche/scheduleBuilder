@@ -69,6 +69,7 @@ angular
           $scope.showCount = schedCount + 1;
           $scope.vSched = viableSchedules[schedCount];
           $scope.showBtns = true;
+          console.log($scope.vSched)
           $scope.showCalendar();
           var tmpTime = [];
           var tmpDay = [];
@@ -76,27 +77,27 @@ angular
             tmpTime.push($scope.vSched[i].Times.split(" "));
             tmpDay.push($scope.vSched[i].Days);
           }
-          console.log(tmpDay);
           time2utc(tmpTime)
         });
       }
     }; 
     var scheduleUtc = []
     var time2utc = function(timeArr){
+      var eventObj = {
+        title: "",
+        start: "",
+        end: ""
+      }
       for(var i=0; i<timeArr.length; i++){
         var tmpVar = timeArr[i].splice(0, 1);
         if (tmpVar !== '-'){
-          console.log(tmpVar)
           tmpVar = tmpVar.pop().slice(0, 7);
-          console.log('tmpVar' + tmpVar)
+          console.log('tmpVar: ' + tmpVar)
           var now = new Date();
           tmpVar= moment(tmpVar,["h:mmA"]).format("HH:mm")
-          console.log(tmpVar)
-          console.log(tmpVar.slice(0,2), tmpVar.slice(3,5))
-          var poopy = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), tmpVar.slice(0,2)-7 , tmpVar.slice(3,5));
-          console.log(poopy)
+          console.log(moment(now.getUTCFullYear() +''+  now.getUTCMonth() +''+ now.getUTCDate() + ' ' + tmpVar))
+          var poopy = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), tmpVar.slice(0,2)-7, tmpVar.slice(3,5));
           console.log(poopy.toISOString());
-          console.log(poopy.toUTCString());
           scheduleUtc.push(poopy.toISOString());
         }
       }
@@ -111,7 +112,8 @@ angular
           navLinks: true,
           allDaySlot: false,
           weekends: false,
-          minTime: "07:00:00",
+          header:false,
+          minTime: "08:00:00",
           maxTime: "22:00:00",
           contentHeight: 600,
           events: [
@@ -121,7 +123,7 @@ angular
             },
             {
               title: 'fart',
-              start: scheduleUtc[2]
+              start: scheduleUtc[1]
             }
           ]
         });

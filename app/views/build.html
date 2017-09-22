@@ -1,7 +1,7 @@
 <div class="row" style="padding-top: 20px;">
   <div class="col-sm-7 genpanel">
     <div class="card">
-        <div class="card-header text-center warning-color-dark">
+        <div class="card-header text-center primary">
             Schedule
         </div>
       <div class="card-body">
@@ -26,6 +26,7 @@
               </tr>
             </tbody>
           </table>
+          <div id="calendar"></div>
         </div>
         <div ng-show="showBtns" class="row" style="text-align: center;">
           <button type="button" class="btn btn-warning col-lg-2 mr-auto" ng-click="prevPage()"><i class="i2 fa fa-chevron-left"></i>  Back</button>
@@ -38,7 +39,7 @@
 
   <div class="col-sm-5">
     <div class="card">
-      <div class="card-header warning-color-dark">
+      <div class="card-header primary">
         Class Settings
       </div>
       <div class="card-body container-fluid">
@@ -63,7 +64,4 @@
   </div>
 </div>
 </div>
-    </div>
-    <div>
-      <div id='calendar'></div>
     </div>
