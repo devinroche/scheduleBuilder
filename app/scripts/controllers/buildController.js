@@ -15,12 +15,14 @@ angular
 
     $scope.clearAll = function() {
       $scope.viableSchedules = [];
+      $scope.events = []
       viableSchedules = []
       $scope.showBtns = false;
       $scope.vSched = []
       schedCount = 0
       $scope.formatRequest = [];
       $scope.userClasses = [];
+      $('#calendar').fullCalendar('removeEvents')
       toastr("warning", "Potential classes have been cleared");
     };
 
@@ -48,11 +50,13 @@ angular
       }
       console.log($scope.userClasses);
     };
-  
+    
+    $scope.events = []
     var schedCount = 0;
     var viableSchedules = [];
     $scope.viableSchedules = [];
     $scope.formatRequest = [];
+
     $scope.generateSchedule = function(classArr) {
       for (var i = 0; i < classArr.length; i++) {
         $scope.formatRequest.push(classArr[i].description);
@@ -70,7 +74,6 @@ angular
           $scope.vSched = viableSchedules[schedCount];
           $scope.showBtns = true;
           console.log($scope.vSched)
-          $scope.showCalendar();
           var tmpTime = [];
           var tmpDay = [];
           for(var i =0; i < $scope.vSched.length; i++){
@@ -81,34 +84,39 @@ angular
         });
       }
     }; 
+    
     var scheduleUtc = []
     var time2utc = function(timeArr){
-      var eventObj = {
-        title: "",
-        start: "",
-        end: ""
-      }
       for(var i=0; i<timeArr.length; i++){
         var tmpVar = timeArr[i].splice(0, 1);
         if (tmpVar !== '-'){
           tmpVar = tmpVar.pop().slice(0, 7);
-          console.log('tmpVar: ' + tmpVar)
           var now = new Date();
           tmpVar= moment(tmpVar,["h:mmA"]).format("HH:mm")
           console.log(moment(now.getUTCFullYear() +''+  now.getUTCMonth() +''+ now.getUTCDate() + ' ' + tmpVar))
           var poopy = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), tmpVar.slice(0,2)-7, tmpVar.slice(3,5));
-          console.log(poopy.toISOString());
           scheduleUtc.push(poopy.toISOString());
+
+          var eventObj = {
+            title: $scope.vSched[i].Class,
+            start: scheduleUtc[i]
+          }
+
+          $scope.events.push(eventObj)
         }
       }
-      console.log(scheduleUtc)
+      $scope.showCalendar();
+      console.log($scope.events)
     }
 
     $scope.showCalendar = function(){
+      $('#calendar').fullCalendar('addEventSource', $scope.events);
+      $('#calendar').fullCalendar('rerenderEvents');
+
       $(document).ready(function() {
         $('#calendar').fullCalendar({
           defaultView: 'agendaWeek',
-          defaultDate: '2017-09-22',
+          defaultDate: '2017-09-25',
           navLinks: true,
           allDaySlot: false,
           weekends: false,
@@ -116,16 +124,7 @@ angular
           minTime: "08:00:00",
           maxTime: "22:00:00",
           contentHeight: 600,
-          events: [
-            {
-              title: 'fart',
-              start: scheduleUtc[0]
-            },
-            {
-              title: 'fart',
-              start: scheduleUtc[1]
-            }
-          ]
+          events: $scope.events
         });
         
       });
