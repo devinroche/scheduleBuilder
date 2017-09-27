@@ -80,53 +80,55 @@ angular
             tmpTime.push($scope.vSched[i].Times.split(" "));
             tmpDay.push($scope.vSched[i].Days);
           }
-          time2utc(tmpTime)
+          time2utc(tmpTime, tmpDay)
         });
       }
     }; 
     
-    var scheduleUtc = []
-    var time2utc = function(timeArr){
+    var time2utc = function(timeArr, dayArr){
       for(var i=0; i<timeArr.length; i++){
         var tmpVar = timeArr[i].splice(0, 1);
+        var dow = []
+        if (dayArr[i] == 'MWF'){
+          dow = [1, 3, 5]
+        }else if(dayArr[i] == 'TR'){
+          dow=[2,4]
+        }else if(dayArr[i] == 'MW'){
+          dow = [1, 3]
+        }
+        console.log(dow)
         if (tmpVar !== '-'){
           tmpVar = tmpVar.pop().slice(0, 7);
-          var now = new Date();
           tmpVar= moment(tmpVar,["h:mmA"]).format("HH:mm")
-          console.log(moment(now.getUTCFullYear() +''+  now.getUTCMonth() +''+ now.getUTCDate() + ' ' + tmpVar))
-          var poopy = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), tmpVar.slice(0,2)-7, tmpVar.slice(3,5));
-          scheduleUtc.push(poopy.toISOString());
+          // scheduleUtc.push(tmpVar);
 
           var eventObj = {
             title: $scope.vSched[i].Class,
-            start: scheduleUtc[i]
+            start: tmpVar,
+            dow: dow
           }
-
           $scope.events.push(eventObj)
         }
       }
+      $('#calendar').fullCalendar('addEventSource', $scope.events);
+      $('#calendar').fullCalendar('rerenderEvents');
       $scope.showCalendar();
-      console.log($scope.events)
     }
 
     $scope.showCalendar = function(){
-      $('#calendar').fullCalendar('addEventSource', $scope.events);
-      $('#calendar').fullCalendar('rerenderEvents');
 
       $(document).ready(function() {
         $('#calendar').fullCalendar({
           defaultView: 'agendaWeek',
           defaultDate: '2017-09-25',
-          navLinks: true,
           allDaySlot: false,
           weekends: false,
           header:false,
           minTime: "08:00:00",
-          maxTime: "22:00:00",
+          maxTime: "21:00:00",
           contentHeight: 600,
           events: $scope.events
         });
-        
       });
     }
 
