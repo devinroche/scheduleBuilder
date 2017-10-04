@@ -23,16 +23,10 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-      })
       .when('/build', {
         templateUrl: 'views/build.html',
         controller: 'BuildCtrl',
         controllerAs: 'build'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
       })
       .otherwise({
         redirectTo: '/'
