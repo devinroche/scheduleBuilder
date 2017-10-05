@@ -99,8 +99,13 @@ angular
 
     var time2utc = function(timeArr, dayArr){
       for(var i=0; i<timeArr.length; i++){
-        var tmpVar = timeArr[i].splice(0, 1);
+        console.log(timeArr[i])
+        var startTime = timeArr[i].splice(0, 1);
+        console.log(startTime)
+        var endTime = timeArr[i].splice(1, 2);
+        console.log(endTime)
         var dow = []
+        var duration;
         if (dayArr[i] == 'MWF'){
           dow = [1, 3, 5]
         }else if(dayArr[i] == 'TR'){
@@ -120,13 +125,17 @@ angular
         }else if(dayArr[i] == 'F'){
           dow = [4]
         }
-        if (tmpVar !== '-'){
-          tmpVar = tmpVar.pop().slice(0, 7);
-          tmpVar= moment(tmpVar,["h:mmA"]).format("HH:mm")
+        if (startTime !== '-' && endTime !== '-'){
+          startTime = startTime.pop().slice(0, 7);
+          startTime= moment(startTime,["h:mmA"]).format("HH:mm")
+
+          endTime = endTime.pop().slice(0,7);
+          endTime = moment(endTime, ["h:mmA"]).format("HH:mm")
 
           var eventObj = {
             title: $scope.vSched[i].Class,
-            start: tmpVar,
+            start: startTime,
+            end: endTime,
             dow: dow
           }
           $scope.events.push(eventObj)

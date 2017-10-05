@@ -1,12 +1,10 @@
 .card {
   height: 575px;
 }
-.loadclass {
-  height: 275px;
-  margin-bottom: 1rem;
-  background-color: rgba(0, 0, 0, 0.03);
+.loadclass > span {
+  color: rgba(0, 0, 0, 0.4);
 }
-.table {
+.table-container {
   min-height: 275px;
   overflow-y: scroll;
 }
