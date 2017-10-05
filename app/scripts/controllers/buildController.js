@@ -86,26 +86,40 @@ angular
         });
       }
     }; 
-    
+    var colorPicker = ["#ff4444", "#ffbb33", "#00C851", "#33b5e5", "#2BBBAD", "#4285F4", "#aa66cc"]
+    var colorBorder = ["#CC0000", "#FF8800", "#007E33", "#0099CC", "#00695c", "#0d47a1", "#9933CC"]
+
     var prepareCalendar = function (){
-      var tmpTime = [];
-      var tmpDay = [];
+      var timeArr = [];
+      var dayArr = [];
       for(var i =0; i < $scope.vSched.length; i++){
-        tmpTime.push($scope.vSched[i].Times.split(" "));
-        tmpDay.push($scope.vSched[i].Days);
+        timeArr.push($scope.vSched[i].Times.split(" "));
+        dayArr.push($scope.vSched[i].Days);
       }
-      time2utc(tmpTime, tmpDay)
+      time2utc(timeArr, dayArr)
+    }
+
+    var stringToColour = function(str) {
+      var hash = 0;
+      for (var i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      var colour = '#';
+      for (var i = 0; i < 3; i++) {
+        var value = (hash >> (i * 8)) & 0xFF;
+        colour += ('00' + value.toString(16)).substr(-2);
+      }
+
+      return colour;
     }
 
     var time2utc = function(timeArr, dayArr){
       for(var i=0; i<timeArr.length; i++){
-        console.log(timeArr[i])
         var startTime = timeArr[i].splice(0, 1);
-        console.log(startTime)
         var endTime = timeArr[i].splice(1, 2);
-        console.log(endTime)
         var dow = []
         var duration;
+
         if (dayArr[i] == 'MWF'){
           dow = [1, 3, 5]
         }else if(dayArr[i] == 'TR'){
@@ -125,6 +139,7 @@ angular
         }else if(dayArr[i] == 'F'){
           dow = [4]
         }
+
         if (startTime !== '-' && endTime !== '-'){
           startTime = startTime.pop().slice(0, 7);
           startTime= moment(startTime,["h:mmA"]).format("HH:mm")
@@ -136,7 +151,9 @@ angular
             title: $scope.vSched[i].Class,
             start: startTime,
             end: endTime,
-            dow: dow
+            dow: dow,
+            backgroundColor: colorPicker[i],
+            borderColor: colorBorder[i]
           }
           $scope.events.push(eventObj)
         }
@@ -191,4 +208,3 @@ angular
     };
 
   });
-  

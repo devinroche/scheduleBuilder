@@ -8,3 +8,12 @@
   min-height: 275px;
   overflow-y: scroll;
 }
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(0,0,0,.2);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
