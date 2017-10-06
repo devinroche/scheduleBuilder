@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'angucomplete-alt'
+    'angucomplete-alt',
+    'vesparny.fancyModal'
   ])
   .config(function($routeProvider, $locationProvider, $sceDelegateProvider) {
     $routeProvider

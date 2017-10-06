@@ -9,7 +9,7 @@
  */
 angular
   .module("scheduleBuilderApp")
-  .controller("BuildCtrl", function($scope, $http, toastr, httpService) {
+  .controller("BuildCtrl", function($scope, $http, toastr, httpService, $fancyModal) {
     $scope.allClasses = [];
     $scope.showBtns = false;
     $scope.classpick = false;
@@ -174,7 +174,10 @@ angular
           minTime: "08:00:00",
           maxTime: "21:00:00",
           height: 480,
-          events: $scope.events
+          events: $scope.events,
+          eventClick: function(event) {
+              $scope.moreInfo(event)
+          }
         });
       });
     }
@@ -203,8 +206,35 @@ angular
       prepareCalendar()
     };
 
+    $scope.printCal = function() {
+          html2canvas(document.getElementById("calendar"), {
+              onrendered: function (canvas) {
+                var a = document.createElement('a');
+                // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
+                a.href = canvas.toDataURL("image/png")
+                a.download = 'somefilename.jpg';
+                a.click();
+              }
+          });
+      }
+    
+
     $scope.moreInfo = function(classInfo){
       console.log(classInfo)
+      $scope.classInformation;
+      console.log($scope.vSched)
+      for(var i=0; i<$scope.vSched.length; i++){
+        if($scope.vSched[i].Class === classInfo.title){
+          console.log($scope.vSched[i])
+          $scope.classInformation = $scope.vSched[i]
+          $fancyModal.open({ 
+            templateUrl: '../../views/modal1.html' ,
+            scope: $scope
+          });
+          $('.fancymodal-overlay fancymodal-overlay-opening').removeClass('fancymodal-overlay fancymodal-overlay-opening')
+          $( ".fancymodal-content" ).removeClass('fancymodal-content').addClass('modal-content modal-dialog')
+        }
+      }
     };
 
   });
