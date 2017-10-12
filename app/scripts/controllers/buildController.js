@@ -207,15 +207,12 @@ angular
     };
 
     $scope.moreInfo = function(classInfo){
-      console.log(classInfo)
       $scope.classInformation;
-      console.log($scope.vSched)
       for(var i=0; i<$scope.vSched.length; i++){
         if($scope.vSched[i].Class === classInfo.title){
-          console.log($scope.vSched[i])
           $scope.classInformation = $scope.vSched[i]
           $fancyModal.open({ 
-            templateUrl: '../../views/modal1.html' ,
+            templateUrl: '../../views/classModal.html' ,
             scope: $scope
           });
           $('.fancymodal-overlay fancymodal-overlay-opening').removeClass('fancymodal-overlay fancymodal-overlay-opening')
@@ -223,5 +220,4 @@ angular
         }
       }
     };
-
   });
