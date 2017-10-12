@@ -206,19 +206,6 @@ angular
       prepareCalendar()
     };
 
-    $scope.printCal = function() {
-          html2canvas(document.getElementById("calendar"), {
-              onrendered: function (canvas) {
-                var a = document.createElement('a');
-                // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
-                a.href = canvas.toDataURL("image/png")
-                a.download = 'somefilename.jpg';
-                a.click();
-              }
-          });
-      }
-    
-
     $scope.moreInfo = function(classInfo){
       console.log(classInfo)
       $scope.classInformation;
