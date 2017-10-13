@@ -17,3 +17,7 @@
   background-color: rgba(0,0,0,.2);
   -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
+.tscroll {
+  max-height: 290px;
+  overflow-y: scroll;
+}
