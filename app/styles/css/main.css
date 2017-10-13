@@ -21,3 +21,9 @@
   max-height: 290px;
   overflow-y: scroll;
 }
+.rfix{
+  padding-top: 10px;
+}
+.rfix h4{
+  padding-top:15px;
+}
