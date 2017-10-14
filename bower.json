@@ -11,7 +11,8 @@
     "angular-touch": "^1.4.0",
     "angucomplete-alt": "^3.0.0",
     "MDBootstrap": "latest",
-    "angular-fancy-modal": "^0.1.4"
+    "angular-fancy-modal": "^0.1.4",
+    "angularytics": "^0.4.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

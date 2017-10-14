@@ -37,4 +37,4 @@ angular
       'https://schedule-builder-backend.herokuapp.com/**'
     ]);
     $locationProvider.hashPrefix('');
-  });
+  })
