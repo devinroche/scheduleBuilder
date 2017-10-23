@@ -16,27 +16,18 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'angucomplete-alt'
+    'angucomplete-alt',
+    'vesparny.fancyModal'
   ])
   .config(function($routeProvider, $locationProvider, $sceDelegateProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
       })
       .when('/build', {
         templateUrl: 'views/build.html',
         controller: 'BuildCtrl',
         controllerAs: 'build'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
       })
       .otherwise({
         redirectTo: '/'

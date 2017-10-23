@@ -10,7 +10,6 @@
 angular.module('scheduleBuilderApp')
   .service('toastr', function () {
     var toastrInit = function (type, msg){
-      console.log('poop');
       toastr.options = {
         "closeButton": false,
         "debug": false,
