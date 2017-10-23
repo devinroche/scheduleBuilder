@@ -98,7 +98,6 @@ angular
     var prepareCalendar = function () {
       var timeArr = [];
       var dayArr = [];
-      console.log()
       if(typeof($scope.vSched) === 'undefined'){
         noSchedules()
       }
@@ -126,6 +125,7 @@ angular
         eventObj.backgroundColor = colorPicker[i]
         eventObj.borderColor = colorBorder[i]
 
+        console.log(eventObj)
         $scope.events.push(eventObj)
       }
 
