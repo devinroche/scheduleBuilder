@@ -10,6 +10,7 @@
 angular
   .module("scheduleBuilderApp")
   .controller("BuildCtrl", function($scope, $http, toastr, httpService, $fancyModal) {
+    console.log("fart")
     $scope.allClasses = [];
     $scope.showBtns = false;
     $scope.classpick = false;
@@ -31,8 +32,8 @@ angular
     httpService.getClasses().then(function(r) {
       $scope.allClasses = r.data;
       console.log(r.data)
-      console.timeEnd('class load')
-      console.log('classes are ready to go!');
+      console.timeEnd('classes loaded')
+
     });
 
     $scope.userClasses = [];

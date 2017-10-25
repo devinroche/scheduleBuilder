@@ -6,27 +6,34 @@
   <title>Schedule Builder</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="icon" type="image/ico" href="../favicon.ico">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108635803-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-108635803-1');
+    </script>
+
 
   <link href="https://cdn.jsdelivr.net/npm/angucomplete-alt@3.0.0/angucomplete-alt.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angucomplete-alt/3.0.0/angucomplete-alt.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.css" />
-  
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="/bower_components/angular-fancy-modal/dist/angular-fancy-modal.css" />
   <link rel="stylesheet" href="/bower_components/angucomplete-alt/angucomplete-alt.css">
+  <link rel="stylesheet" href="/bower_components/fullcalendar/dist/fullcalendar.min.css">
+  <link rel="stylesheet" href="/bower_components/toastr/toastr.min.css">
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
-  <!-- <link rel="stylesheet" type="text/css" href="styles/scss/custom.css"> -->
   <link rel="stylesheet" href="styles/css/main.css">
   <!-- endbuild -->
 </head>
@@ -36,12 +43,9 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-  <!-- Add your site or application content here -->
-
   <nav class="navbar navbar-dark navbar-expand-lg primary-color" id="navfix">
         <a class="navbar-brand" href="#">
           Schedule Builder
-          <!-- <img alt="logo" src="https://i.imgur.com/ZEfgorb.png" width="250px" style="padding:0px; margin:0px;" /> -->
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -66,7 +70,10 @@
 
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
-  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/moment/min/moment.min.js"></script>
+  <script src="/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+  <script src="bower_components/fullcalendar/dist/gcal.js "></script>
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/MDBootstrap/js/bootstrap.min.js"></script>
   <script src="/bower_components/angular-animate/angular-animate.js"></script>
@@ -78,7 +85,7 @@
   <script src="/bower_components/angucomplete-alt/dist/angucomplete-alt.min.js"></script>
   <script src="/bower_components/MDBootstrap/js/mdb.min.js"></script>
   <script src="/bower_components/angular-fancy-modal/dist/angular-fancy-modal.min.js"></script>
-
+  <script src="/bower_components/toastr/toastr.min.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -87,8 +94,6 @@
   <script src="scripts/controllers/buildController.js"></script>
   <script src="scripts/services/toastrService.js"></script>
   <script src="scripts/services/httpService.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.js"></script>
   <!-- endbuild -->
 </body>
 
