@@ -40,9 +40,7 @@ angular
       toastr("warning", "Potential classes have been cleared");
     };
 
-    toastr("warning", "Loading up classes!");
     httpService.getClasses().then(function (r) {
-      toastr("success", "Classes have been loaded!");
       $scope.inputWait = false;
       $scope.allClasses = r.data;
     });
