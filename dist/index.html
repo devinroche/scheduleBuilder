@@ -6,13 +6,23 @@
   <title>Schedule Builder</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="icon" type="image/ico" href="../favicon.ico">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108635803-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-108635803-1');
+    </script>
+
+
   <link href="https://cdn.jsdelivr.net/npm/angucomplete-alt@3.0.0/angucomplete-alt.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angucomplete-alt/3.0.0/angucomplete-alt.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <link rel="stylesheet" href="styles/vendor.css">
   <link rel="stylesheet" href="styles/main.css">
@@ -23,24 +33,27 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-  <!-- Add your site or application content here -->
-  <div class="header">
-    <nav class="navbar navbar-toggleable-sm navbar-light">
-      <a class="navbar-brand" href="#">
-        <img alt="logo" src="https://i.imgur.com/ZEfgorb.png" width="250px" style="padding:0px; margin:0px;" />
-      </a>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav nav navbar-right">
-          <li class="nav-item"><a class="nav-link" href="#">Home </a></li>
-          <li class="nav-item"><a class="nav-link" ng-href="#/about">About</a></li>
-          <li class="nav-item"><a class="nav-link" ng-href="#/build">Build</a></li>
-        </ul>
-      </div>
+  <nav class="navbar navbar-dark navbar-expand-lg primary-color" id="navfix">
+        <a class="navbar-brand" href="#">
+          Schedule Builder
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto" style="padding-right: 60px;">
+                <li class="nav-item" style="padding-right: 20px;">
+                    <a class="nav-link" ng-href="#">Home </a>
+                </li>
+                <li class="nav-item" style="padding-right: 60px;">
+                    <a class="nav-link" ng-href="#/build">Build </a>
+                </li>
+    
+            </ul>
+        </div>
     </nav>
-  </div>
 
-  <div class="cont">
+  <div class="container-fluid">
     <div ng-view=""></div>
   </div>
 

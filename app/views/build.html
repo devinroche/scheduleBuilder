@@ -1,68 +1,52 @@
-<div class="row">
-
-  <div class="col-sm-8 genpanel">
-    <div class="panel panel-default">
-      <div class="panel-heading panelHead">
-        <h2 class="panel-title" style="text-align:center;">Schedule</h2>
-      </div>
-      <div class="panel-body panel2 ">
-        <div class="row schedBody">
-          <table class="table">
-            <thead>
-              <tr ng-show="showBtns">
-                <th>Time</th>
-                <th>Day</th>
-                <th>Class</th>
-                <th>Title</th>
-                <th>Professor</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="c in vSched">
-                <td>{{c.Times}}</td>
-                <td>{{c.Days}}</td>
-                <td>{{c.Class}}</td>
-                <td>{{c.Title}}</td>
-                <td>{{c.Instructors}}</td>
-              </tr>
-            </tbody>
-          </table>
+<div class="row" style="padding-top: 5px;">
+  <div class="col-sm-7 genpanel">
+    <div class="card">
+      <div class="card-body">
+        <div class="row schedBody" ng-show="showBtns">
+          <div id="calendar"></div>
         </div>
-        <div ng-show="showBtns" class="row btnBody" style="text-align: center;">
-          <hr/>
-          <button type="button" class="btn btn-warning col-lg-2 col-lg-offset-1" ng-click="prevPage()"><i class="i2 fa fa-chevron-left"></i>  Back</button>
-          <h4 class="col-lg-6">{{showCount}} / {{viableSize}}</h4>
-          <button type="button" class="btn btn-info col-lg-2" ng-click="nextPage()">Next  <i class="i1 fa fa-chevron-right"></i></button>
+        <div ng-show="showBtns" class="row justify-content-md-center rfix" >
+          <button type="button" class="btn btn-warning col-lg-2 justify-content-md-center" ng-click="prevPage()"><i class="i2 fa fa-chevron-left"></i>  Back</button>
+          <div class="col-lg-5 justify-content-md-center"><h4 style="text-align: center;">{{showCount}} / {{viableSize}}</h4></div>
+          <button type="button" class="btn btn-info col-lg-2 justify-content-md-center" ng-click="nextPage()">Next <i class="i1 fa fa-chevron-right"></i></button>
         </div>
+        <div ng-show="noSchedules"><h1>No Valid Schedules :( </h1></div>
       </div>
     </div>
   </div>
 
-  <div class="col-sm-4 classpanel">
-    <div class="panel panel-default">
-      <div class="panel-heading panelHead">
-        <angucomplete-alt id="ex1" placeholder="Search classes" selected-object="addUserClasses" selected-object-data="selectedClass" local-data="allClasses" search-fields="Title,Class,Subject,Course" title-field="Title" description-field="Class" clear-selected="True"
+  <div class="col-sm-5">
+    <div class="card">
+      <div class="card-header text-center primary">
+        Class Settings
+      </div>
+      <div class="card-body container-fluid">
+        <angucomplete-alt id="ex1" placeholder="Search classes" disable-input="inputWait" selected-object="addUserClasses" selected-object-data="selectedClass" local-data="allClasses" search-fields="Title,Class,Subject,Course" title-field="Title" description-field="Class" clear-selected="True"
           minlength="2" input-class="form-control">
         </angucomplete-alt>
-      </div>
-      <div class="panel-body panelStyle">
-        <table class="table table-striped">
-          <tr ng-repeat="class in userClasses">
-            <td>{{class.originalObject.Class}}</td>
-            <td>{{class.title}}</td>
-            <td ng-show="!edit"> </td>
-            <td><button ng-show="edit" type="button" class="btn btn-danger btn-xs" ng-click="removeClass(class)">X</button></td>
-          </tr>
-        </table>
-      </div>
-    </div>
+        <div class="tscroll">
+        <div class="table-container">
+          <table class="table table-striped table-bordered table-sm" ng-show="classpick">
+            <tr ng-repeat="class in userClasses" class="row" style="margin: 0px">
+                <td class="align-middle col-sm-3 ">{{class.originalObject.Class}}</td>
+                <td class="align-middle col-sm-7">{{class.title}} </td>
+                <td class="col-sm-2" style="width: 30px; height: 45px; padding: 0px; margin:0px;"> <button ng-show="edit" type="button" class="btn btn-danger btn-sm" ng-click="removeClass(class)">X</button> </td>
+            </tr>
+          </table>
+        </div>
+        </div>
+        <div ng-show="!classpick">
+          <table class="loadclass">
+          </table>
+        </div>
+
     <div class="row">
-      <div class="col-lg-5"><button type="button" style="width: 100%;" class="btn btn-info" ng-click="toggleEdit()">Edit Classes</button></div>
-      <div class="col-lg-7"><button type="button" style="width: 100%;" class="btn btn-danger" ng-click="clearAll()">Clear All</button></div>
+      <div class="col-lg-6"><button type="button" class="btn btn-block btn-info" ng-click="toggleEdit()">Edit Classes</button></div>
+      <div class="col-lg-6"><button type="button" class="btn  btn-block btn-danger" ng-click="clearAll()">Clear All</button></div>
     </div>
     <br>
-    <div class="row">
-      <div class="col-lg-12"><button type="button" style="width: 100%;" class="btn btn-success btn-lg" ng-click="generateSchedule(userClasses)">Generate Schedules</button></div>
-    </div>
+    <button type="button" style="margin-bottom: 20px;" class="btn btn-block btn-success btn-lg" ng-click="generateSchedule(userClasses)">Generate Schedules</button>
   </div>
 </div>
+</div>
+    </div>

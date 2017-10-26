@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc service
- * @name scheduleBuilderApp.httpService
- * @description
- * # httpService
- * Service in the scheduleBuilderApp.
- */
-
 const baseUrl = "https://schedule-builder-backend.herokuapp.com/api/";
 
 angular.module('scheduleBuilderApp')
