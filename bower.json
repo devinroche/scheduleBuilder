@@ -11,7 +11,9 @@
     "angular-touch": "^1.4.0",
     "angucomplete-alt": "^3.0.0",
     "MDBootstrap": "latest",
-    "angular-fancy-modal": "^0.1.4"
+    "angular-fancy-modal": "^0.1.4",
+    "fullcalendar": "^3.6.1",
+    "toastr":"2.1.3"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

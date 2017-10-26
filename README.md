@@ -1,4 +1,5 @@
 # [Schedule Builder](http://www.schedulebuilder.party)
+<a href="https://codebeat.co/projects/github-com-devinroche-schedulebuilder-master"><img alt="codebeat badge" src="https://codebeat.co/badges/909d23cb-26bc-4631-b122-9ce856a7e67b" /></a>
 
 This app uses Mongo, Express, Angular, and Node (MEAN). Generate all possible schedules for users based on their class selections! This project is tied to the [Schedule Builder Backend](https://github.com/tdurnford/schedule-builder-backend). We intended to redo the program once made as a Java Applet (it stunk) using modern web developmen technologies! 
 

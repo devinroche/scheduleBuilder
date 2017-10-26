@@ -1,92 +1,19 @@
-// bower:scss
-// endbower
-@import 'colors';
-@import 'build';
-@import url('https://fonts.googleapis.com/css?family=Lato');
-html{
-  background-color: $white;
-}
-body {
-  background-color: $white;
-  font-family: 'Lato';
-  padding: 0;
-}
-.navbar{
-  padding-bottom: 10px;
-}
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.footer,
-.header,
-.marketing {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-/* Custom page header */
-.header {
-  margin-bottom: 10px;
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 0px;
+.card {
+    height: 575px;
   }
-}
-/* Custom page footer */
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid $dark-blue;
-
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+  .loadclass > span {
+    color: rgba(0, 0, 0, 0.4);
   }
-}
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
+  .table-container {
+    min-height: 275px;
+    overflow-y: scroll;
   }
-}
-.class-ul {
-  list-style-type: none;
-  padding-left: 0px;
-  li{
-    padding-left: 0px;
-    p{
-      border-bottom: 1px solid black
-    }
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 4px;
   }
-}
-.cont {
-  width: 1200px;
-  margin: 0 auto;
-}
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
   }
-  /* Remove the padding we set earlier */
-  .footer,
-  .header,
-  .marketing {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
