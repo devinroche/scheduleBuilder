@@ -41,8 +41,9 @@ angular
     };
 
     httpService.getClasses().then(function (r) {
-      $scope.inputWait = false;
       $scope.allClasses = r.data;
+      $scope.inputWait = false;
+      console.log($scope.allClasses)
     });
 
     $scope.addUserClasses = function (course) {
@@ -68,6 +69,7 @@ angular
     }
 
     $scope.generateSchedule = function (classArr) {
+      console.log(classArr)
       $scope.formatRequest = []
       $scope.noSchedules = false;
       clearCalendar()
@@ -77,12 +79,13 @@ angular
       if ($scope.formatRequest.length === 0) {
         toastr("error", "One or more classes required");
       } else {
-        toastr("success", "Your schedules are being prepared!");
+        toastr("success", "We are cookin up your schedules!");
         var submissionObj = {
           classes: $scope.formatRequest,
           block: []
         };
         httpService.postClass(submissionObj).then(function (r) {
+          console.log(r.data)
           viableSchedules = r.data;
           $scope.viableSize = viableSchedules.length;
           $scope.showCount = schedCount + 1;
@@ -101,23 +104,23 @@ angular
       }
       else{
         for (var i = 0; i < $scope.vSched.length; i++) {
-          timeArr.push($scope.vSched[i].Times.split(" "));
-          dayArr.push($scope.vSched[i].Days);
+          dayArr.push($scope.vSched[i].week);
         }
-        time2utc(timeArr, dayArr)
+        
+        time2utc(dayArr)
       }
     }
 
     var colorPicker = ["#ff4444", "#ffbb33", "#00C851", "#33b5e5", "#2BBBAD", "#4285F4", "#aa66cc", "#29b6f6", "#f06292"]
     var colorBorder = ["#CC0000", "#FF8800", "#007E33", "#0099CC", "#00695c", "#0d47a1", "#9933CC", "#039be5", "#ec407a"]
 
-    var time2utc = function (timeArr, dayArr) {
-      for (var i = 0; i < timeArr.length; i++) {
+    var time2utc = function (dayArr) {
+      for (var i = 0; i < dayArr.length; i++) {
       
         var eventObj = eventService.eventObj(
-          eventService.startTime(timeArr[i]), 
-          eventService.endTime(timeArr[i]), 
-          $scope.vSched[i].Class, 
+          eventService.startTime(dayArr[i]),
+          eventService.endTime(dayArr[i]),
+          $scope.vSched[i].title, 
           eventService.getDow(dayArr[i])
         )
         eventObj.backgroundColor = colorPicker[i]
