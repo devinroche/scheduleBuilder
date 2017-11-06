@@ -41,8 +41,8 @@ angular
     };
 
     httpService.getClasses().then(function (r) {
-      $scope.inputWait = false;
       $scope.allClasses = r.data;
+      $scope.inputWait = false;
     });
 
     $scope.addUserClasses = function (course) {
@@ -59,7 +59,6 @@ angular
       if (idx > -1) {
         $scope.userClasses.splice(idx, 1);
       }
-      console.log($scope.userClasses)
     };
 
     var clearCalendar = function () {
@@ -77,7 +76,7 @@ angular
       if ($scope.formatRequest.length === 0) {
         toastr("error", "One or more classes required");
       } else {
-        toastr("success", "Your schedules are being prepared!");
+        toastr("success", "We are cookin up your schedules!");
         var submissionObj = {
           classes: $scope.formatRequest,
           block: []
@@ -101,29 +100,29 @@ angular
       }
       else{
         for (var i = 0; i < $scope.vSched.length; i++) {
-          timeArr.push($scope.vSched[i].Times.split(" "));
-          dayArr.push($scope.vSched[i].Days);
+          dayArr.push($scope.vSched[i].week);
         }
-        time2utc(timeArr, dayArr)
+        
+        time2utc(dayArr)
       }
     }
 
     var colorPicker = ["#ff4444", "#ffbb33", "#00C851", "#33b5e5", "#2BBBAD", "#4285F4", "#aa66cc", "#29b6f6", "#f06292"]
     var colorBorder = ["#CC0000", "#FF8800", "#007E33", "#0099CC", "#00695c", "#0d47a1", "#9933CC", "#039be5", "#ec407a"]
 
-    var time2utc = function (timeArr, dayArr) {
-      for (var i = 0; i < timeArr.length; i++) {
-      
+    var time2utc = function (dayArr) {
+      for (var i = 0; i < dayArr.length; i++) {
+
         var eventObj = eventService.eventObj(
-          eventService.startTime(timeArr[i]), 
-          eventService.endTime(timeArr[i]), 
-          $scope.vSched[i].Class, 
+          eventService.startTime(dayArr[i]),
+          eventService.endTime(dayArr[i]),
+          $scope.vSched[i].seminar, 
           eventService.getDow(dayArr[i])
         )
         eventObj.backgroundColor = colorPicker[i]
         eventObj.borderColor = colorBorder[i]
 
-        console.log(eventObj)
+
         $scope.events.push(eventObj)
       }
 
@@ -183,9 +182,16 @@ angular
     }
 
     var moreInfo = function (classInfo) {
+
       for (var i = 0; i < $scope.vSched.length; i++) {
-        if ($scope.vSched[i].Class === classInfo.title) {
+        if ($scope.vSched[i].seminar === classInfo.title) {
           $scope.classInformation = $scope.vSched[i]
+
+          $scope.dt = $scope.classInformation.times.split(',').join(', ')
+          $scope.loc=""
+          for(var i=0; i<$scope.classInformation.location.length; i++){
+            $scope.loc += $scope.classInformation.location[i] + " "
+          }
           $fancyModal.open({
             templateUrl: '../../views/classModal.html',
             scope: $scope

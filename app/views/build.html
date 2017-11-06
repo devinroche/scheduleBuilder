@@ -21,14 +21,14 @@
         Class Settings
       </div>
       <div class="card-body container-fluid">
-        <angucomplete-alt id="ex1" placeholder="Search classes" disable-input="inputWait" selected-object="addUserClasses" selected-object-data="selectedClass" local-data="allClasses" search-fields="Title,Class,Subject,Course" title-field="Title" description-field="Class" clear-selected="True"
+        <angucomplete-alt id="ex1" placeholder="Search classes" disable-input="inputWait" selected-object="addUserClasses" selected-object-data="selectedClass" local-data="allClasses" search-fields="title,seminar" title-field="title" description-field="seminar" clear-selected="True"
           minlength="2" input-class="form-control">
         </angucomplete-alt>
         <div class="tscroll">
         <div class="table-container">
           <table class="table table-striped table-bordered table-sm" ng-show="classpick">
             <tr ng-repeat="class in userClasses" class="row" style="margin: 0px">
-                <td class="align-middle col-sm-3 ">{{class.originalObject.Class}}</td>
+                <td class="align-middle col-sm-3 ">{{class.originalObject.seminar}}</td>
                 <td class="align-middle col-sm-7">{{class.title}} </td>
                 <td class="col-sm-2" style="width: 30px; height: 45px; padding: 0px; margin:0px;"> <button ng-show="edit" type="button" class="btn btn-danger btn-sm" ng-click="removeClass(class)">X</button> </td>
             </tr>
