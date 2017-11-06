@@ -43,7 +43,6 @@ angular
     httpService.getClasses().then(function (r) {
       $scope.allClasses = r.data;
       $scope.inputWait = false;
-      console.log($scope.allClasses)
     });
 
     $scope.addUserClasses = function (course) {
@@ -60,7 +59,6 @@ angular
       if (idx > -1) {
         $scope.userClasses.splice(idx, 1);
       }
-      console.log($scope.userClasses)
     };
 
     var clearCalendar = function () {
@@ -69,7 +67,6 @@ angular
     }
 
     $scope.generateSchedule = function (classArr) {
-      console.log(classArr)
       $scope.formatRequest = []
       $scope.noSchedules = false;
       clearCalendar()
@@ -85,7 +82,6 @@ angular
           block: []
         };
         httpService.postClass(submissionObj).then(function (r) {
-          console.log(r.data)
           viableSchedules = r.data;
           $scope.viableSize = viableSchedules.length;
           $scope.showCount = schedCount + 1;
@@ -116,17 +112,17 @@ angular
 
     var time2utc = function (dayArr) {
       for (var i = 0; i < dayArr.length; i++) {
-      
+
         var eventObj = eventService.eventObj(
           eventService.startTime(dayArr[i]),
           eventService.endTime(dayArr[i]),
-          $scope.vSched[i].title, 
+          $scope.vSched[i].seminar, 
           eventService.getDow(dayArr[i])
         )
         eventObj.backgroundColor = colorPicker[i]
         eventObj.borderColor = colorBorder[i]
 
-        console.log(eventObj)
+
         $scope.events.push(eventObj)
       }
 
@@ -186,9 +182,16 @@ angular
     }
 
     var moreInfo = function (classInfo) {
+
       for (var i = 0; i < $scope.vSched.length; i++) {
-        if ($scope.vSched[i].Class === classInfo.title) {
+        if ($scope.vSched[i].seminar === classInfo.title) {
           $scope.classInformation = $scope.vSched[i]
+
+          $scope.dt = $scope.classInformation.times.split(',').join(', ')
+          $scope.loc=""
+          for(var i=0; i<$scope.classInformation.location.length; i++){
+            $scope.loc += $scope.classInformation.location[i] + " "
+          }
           $fancyModal.open({
             templateUrl: '../../views/classModal.html',
             scope: $scope
